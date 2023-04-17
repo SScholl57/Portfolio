@@ -1,6 +1,9 @@
 * {
     margin: 0;
+    padding: 0;
+    border: 0;
   }
+
 
 body {
     font-family: 'Manrope', sans-serif;
@@ -9,24 +12,13 @@ body {
     color: #201e1e;
   }
 
-ul{
-  text-align: left;
-  padding-top: 30px;
-  padding-left: 44%;
-  padding-bottom: 20px;
-}
-
-ul p {
-  padding-bottom: 15px;
-}
-
 a {
     color: #201e1e;
     text-decoration: none;
   }
 
 main{
-  background-color: white;
+  background-color: rgb(255, 255, 255);
 }
 
 h1 {
@@ -62,7 +54,7 @@ nav {
 
 header {
   background-color: white;
-  padding: 20px 50px;
+  padding: 20px 50px 0px 50px;
   background: linear-gradient(#ffffff, #ffffff);
 }
 
@@ -107,9 +99,7 @@ header {
 
 }
 
-Section{
-    padding: 80px;
-}
+
 
 span {
   position: absolute;
@@ -124,9 +114,11 @@ span {
   justify-items: center;
   align-items: center;
   grid-template-columns: repeat(7, 1fr);
-  grid-template-rows: repeat(6, 1fr);
-  grid-column-gap: 4px;
-  grid-row-gap: 4px;
+  grid-template-rows: repeat (6, auto);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  max-width: 100%;
+  max-height: 100%;
   }
   
   .titre { 
@@ -134,56 +126,58 @@ span {
    }
   .icones1 { 
     grid-area: 2 / 2 / 3 / 3; 
-    max-width: fit-content;
-    max-height: fit-content;
   }
   .icones2 { 
     grid-area: 2 / 3 / 3 / 4; 
-    max-width: fit-content;
-    max-height: fit-content;
   }
   .skill { 
     grid-area: 3 / 1 / 4 / 5; 
+    
   }
   .badge1 { 
-    grid-area: 4 / 1 / 5 / 5; 
-    max-width: fit-content;
-    max-height: fit-content;
-    position: relative;
-    left: 15%;
+    grid-area: 4 / 3 / 5 / 4; 
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
   }
   .badge2 { 
-    grid-area: 4 / 1 / 5 / 5; 
-    max-width: fit-content;
-    max-height: fit-content;
-    position: relative;
-    right: 15%;
+    grid-area: 4 / 2 / 5 / 3; 
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
   }
   .project { 
     grid-area: 5 / 1 / 6 / 5; 
-    max-width: fit-content;
-    max-height: fit-content;
+    max-width: auto;
+    max-height: auto;
     font-size: 2.7em;
     border: solid 1px #000000;
     padding: 10px;
+    
   }
   .mentor { 
     grid-area: 6 / 2 / 7 / 4; 
     font-size: 2em;
-
-  }
-  .mentor-link { 
-    grid-area: 6 / 3 / 7 / 5; 
-    max-width: fit-content;
-    max-height: fit-content;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
   }
   .photo { 
     grid-area: 1 / 5 / 7 / 8; 
-    max-width: 100%;
-    max-height: 100%;
-
+    width: auto;
+    height: auto ;
+    max-width: 71%;
+    max-height: 71%;
+    position: relative;
+    right: 15%;
   } 
   
-  
-
-
+  .icones {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+  }
