@@ -99,6 +99,20 @@ header {
   margin-left: 30px;
 }
 
+.left-nav {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  position: absolute;
+  left: 30px;
+  top : 20px;
+}
+
+.left-nav p{
+  padding-left: 20px;
+  
+}
+
 Section{
     padding: 80px;
 }
