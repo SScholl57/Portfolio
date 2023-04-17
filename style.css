@@ -7,8 +7,6 @@ body {
     font-size: 1em;
     background-color: #000000;
     color: #201e1e;
-    Text-align: center;
-    justify-content: center;
   }
 
 ul{
@@ -32,19 +30,15 @@ main{
 }
 
 h1 {
-  text-align: left;
-  font-size: 1.8em;
-  text-shadow: 0 0 2px gray;
-  min-width: auto;
-  border-bottom: 3px solid black;
-  border-width: auto;
-  display: inline-block;
+  text-align: center;
+  font-size: 3em;
 }
 
 h2 {
   padding-top: 30px;
   text-decoration: underline 2px;
   text-underline-offset: 5px;
+  text-align: center;
 }
 
 a:hover {
@@ -110,7 +104,7 @@ header {
 
 .left-nav p{
   padding-left: 20px;
-  
+
 }
 
 Section{
@@ -123,12 +117,73 @@ span {
   left: 50%;
 }
 
-.Mail {
-  padding-top: 30px;
-}
 
-.Téléphone {
-  padding-top: 20px;
-}
+
+.grid-wrapper1 {
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  grid-column-gap: 4px;
+  grid-row-gap: 4px;
+  }
+  
+  .titre { 
+    grid-area: 1 / 1 / 2 / 5;
+   }
+  .icones1 { 
+    grid-area: 2 / 2 / 3 / 3; 
+    max-width: fit-content;
+    max-height: fit-content;
+  }
+  .icones2 { 
+    grid-area: 2 / 3 / 3 / 4; 
+    max-width: fit-content;
+    max-height: fit-content;
+  }
+  .skill { 
+    grid-area: 3 / 1 / 4 / 5; 
+  }
+  .badge1 { 
+    grid-area: 4 / 1 / 5 / 5; 
+    max-width: fit-content;
+    max-height: fit-content;
+    position: relative;
+    left: 15%;
+  }
+  .badge2 { 
+    grid-area: 4 / 1 / 5 / 5; 
+    max-width: fit-content;
+    max-height: fit-content;
+    position: relative;
+    right: 15%;
+  }
+  .project { 
+    grid-area: 5 / 1 / 6 / 5; 
+    max-width: fit-content;
+    max-height: fit-content;
+    font-size: 2.7em;
+    border: solid 1px #000000;
+    padding: 10px;
+  }
+  .mentor { 
+    grid-area: 6 / 2 / 7 / 4; 
+    font-size: 2em;
+
+  }
+  .mentor-link { 
+    grid-area: 6 / 3 / 7 / 5; 
+    max-width: fit-content;
+    max-height: fit-content;
+  }
+  .photo { 
+    grid-area: 1 / 5 / 7 / 8; 
+    max-width: 100%;
+    max-height: 100%;
+
+  } 
+  
+  
 
 
