@@ -20,6 +20,10 @@ a {
     text-decoration: none;
   }
 
+.activelink {
+  color: rgb(0, 214, 214);
+}
+
 main{
   background-color: rgb(255, 255, 255);
 }
@@ -56,12 +60,13 @@ em {
   font-size: 25px;
   line-height: 25px;
   padding-right: 20px;
+  margin-left: 20px;
 }
 
 .header-p p {
   font-size: 25px;
   font-weight: bold;
-  margin-left: 35px;
+  margin-left: 30px;
 }
 
 .header-middle {
@@ -114,6 +119,10 @@ em {
   flex-basis: 0;
 }
 
+.flexwrap {
+  flex-wrap: wrap;
+}
+
 .border {
   border: solid 3px black;
 }
@@ -150,4 +159,14 @@ em {
 
 .marginauto{
   margin: auto;
+}
+
+.logo {
+  max-width: 64px;
+  max-height: 64px;
+}
+
+.flexstart {
+  justify-content: flex-start;
+  align-items: center;
 }
