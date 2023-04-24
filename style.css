@@ -291,7 +291,7 @@ em {
 }
 
 .background_gray{
-  background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(0,0,0,1) 100%), radial-gradient(at top center, rgba(255,255,255,0.40) 0%, rgba(0,0,0,1) 70%) #5a5a5a;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgb(95, 95, 95) 100%), radial-gradient(at top center, rgba(255,255,255,0.40) 0%, rgb(95, 95, 95) 70%) #5a5a5a;
   background-blend-mode: multiply,multiply;
 }
 
