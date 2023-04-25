@@ -16,9 +16,13 @@ html {
   }
 
 a {
-    color: #dbdbdb;
+    color: hsl(224, 34%, 66%);
     text-decoration: none;
   }
+
+.a-top {
+  color: #dbdbdb;
+}
 
 .activelink {
   color: rgb(0, 214, 214);
@@ -238,11 +242,11 @@ em {
 }
 
 .size {
-  min-height: 764px;
+  min-height: 700px;
   width: auto;
   height: auto;
   max-width: 512px;
-  max-height: 764px;
+  max-height: 700px;
 }
 
 .background{
@@ -311,4 +315,29 @@ em {
 
 .radius {
   border-radius: 20px;
+}
+
+.titleproject {
+  font-size: 20px;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.titlemainproject {
+  font-size: 35px;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.projectshadow {
+  box-shadow: 10px 10px 14px 4px rgba(0,0,0,0.39);
+  -webkit-box-shadow: 10px 10px 14px 4px rgba(0,0,0,0.39);
+  -moz-box-shadow: 10px 10px 14px 4px rgba(0,0,0,0.39);
+}
+
+
+.mainprojectshadow {
+  box-shadow: 10px 10px 14px 4px rgba(0,0,0,0.39);
+  -webkit-box-shadow: 10px 10px 14px 4px rgba(0,0,0,0.39);
+  -moz-box-shadow: 10px 10px 14px 4px rgba(0,0,0,0.39);
 }
