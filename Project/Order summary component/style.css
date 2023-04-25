@@ -1,0 +1,226 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    border : 0px;
+}
+
+.attribution { font-size: 11px; text-align: center; }
+.attribution a { color: hsl(228, 45%, 44%); }
+
+.backgroundimage {
+    background-image: url(images/pattern-background-desktop.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: hsl(225, 100%, 94%);
+    max-height: 437px;
+    max-width: 100vw;
+}
+
+@media screen and (max-width: 375px) {
+    .backgroundimage{
+        background-image: url(images/pattern-background-mobile.svg);
+    }
+}
+
+.font_500 {
+    font-family: 'Red Hat Display', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.font_700 {
+    font-family: 'Red Hat Display', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.fontchange_700 {
+    font-family: 'Red Hat Display', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.font_900 {
+    font-family: 'Red Hat Display', sans-serif;
+    font-weight: 900;
+    font-size: 25px;
+}
+
+.full {
+    width: 100vw;
+    height: 100vh;
+}
+
+.border {
+    border: solid 3px black;
+}
+
+.borderred {
+    border: solid 3px red;
+}
+
+.flexh {
+    display: flex;
+    flex-direction: row;
+}
+
+.flexv {
+    display: flex;
+    flex-direction: column;
+}
+
+.justifycenter {
+    justify-content: center;
+}
+
+.alignitemcenter {
+    align-items: center;
+}
+
+.alignselfcenter {
+    align-self: center;
+}
+
+.margintop {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.margintoporder{
+    margin-top: 45px;
+    margin-bottom: 15px;
+}
+
+.flexgrow_1 {
+    flex-grow: 1;
+}
+
+.flexwrap {
+    flex-wrap: wrap;
+}
+
+.textcenter {
+    text-align: center;
+    padding-left: 15%;
+    padding-right: 15%;
+}
+
+.size {
+    max-width: 450px;
+}
+
+.backgroundprice {
+   background: hsl(225, 100%, 98%);
+}
+
+.padding-top {
+    padding-top: 5%;
+}
+
+.padding-bottom {
+    padding-bottom: 5%;
+}
+
+.gap {
+    gap: 5%;
+}
+
+.paddingprice {
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+
+.backgroundunderimg {
+    background: hsl(0, 0%, 100%) ;
+}
+
+.backgroundpayment {
+    background: hsl(245, 75%, 52%);
+}
+
+.paddingpayment {
+    padding-left: 90px;
+    padding-right: 90px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-radius: 10px;
+    color: hsl(225, 100%, 94%);
+    -webkit-box-shadow: 0px 25px 30px 0px hsla(245, 75%, 52%, 0.2); 
+    box-shadow: 0px 25px 30px 0px hsla(245, 75%, 52%, 0.2);
+}
+
+.annualplan {
+    padding-right: 90px;
+}
+
+.annualplanmarginbottom{
+    margin-bottom: 5px;
+}
+
+.change {
+    padding-right : 20px;
+    text-decoration: underline;
+}
+
+.musicicon {
+    padding-left: 20px;
+    margin-right: 20px;
+}
+
+.cancelpadding {
+    padding-bottom: 35px;
+}
+
+.borderradiusimg {
+    border-radius: 30px 30px 0px 0px;
+}
+
+.borderradiusblank {
+    border-radius: 30px 30px 30px 30px;
+}
+
+.change:hover {
+    text-decoration: none;
+    color: hsl(245, 50%, 55%);
+}
+
+.change{
+    color:hsl(245, 75%, 52%);
+}
+
+.hoverpayment:hover{
+    background-color: hsl(245, 50%, 55%);
+}
+
+.hovercancel{
+    color: hsl(224, 23%, 55%);
+}
+
+.hovercancel:hover{
+    color: hsl(223, 47%, 23%);
+}
+
+.ordercolor {
+    color: hsl(223, 47%, 23%);
+}
+
+.textcolor {
+    color: hsl(224, 23%, 55%)
+}
+
+.borderradiusproduct {
+    border-radius: 10px;
+}
+
+.shadow {
+    -webkit-box-shadow: 0px 25px 30px 0px hsla(224, 23%, 55%, 0.2); 
+    box-shadow: 0px 25px 30px 0px hsla(224, 23%, 55%, 0.2);
+}
+
+.textline {
+    line-height: 1.7;
+}
+
+.paddingtext {
+    padding-bottom: 5px;
+}
