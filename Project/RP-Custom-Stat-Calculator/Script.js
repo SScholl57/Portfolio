@@ -232,13 +232,13 @@ function levelUp(){
     updateExp()
 
     while(experience >= experienceRequired){
-        level = level + 1;
-        experience = experience - experienceRequired;
-        experienceRequired = experienceRequired + (level * 10);
+        level += + 1;
+        experience -= experienceRequired;
+        experienceRequired += (level * 10);
         let experienceRequiredDiv = document.getElementById("experienceRequiredDiv");
         experienceRequiredDiv.innerText = experienceRequired;
-        statPoint = statPoint + 1;
-        maxHitPoint = maxHitPoint + fullEndurance;
+        statPoint += + 1;
+        maxHitPoint += fullEndurance;
         actualHitPoint = maxHitPoint;
         updateLvl()
         updatestat()
@@ -277,7 +277,7 @@ function addstr(amount) {
       return
   
     strength = Math.max(strength + amount, 1);
-    statPoint = statPoint - amount
+    statPoint -= amount
     updatestat();
     updateFull();
 }
@@ -293,7 +293,7 @@ function addint(amount) {
       return
   
     intelligence = Math.max(intelligence + amount, 1);
-    statPoint = statPoint - amount
+    statPoint -= amount
     updatestat();
     updateFull();
     updateMana();
@@ -310,7 +310,7 @@ function addend(amount) {
       return
   
     endurance = Math.max(endurance + amount, 1);
-    statPoint = statPoint - amount
+    statPoint -= amount
     updatestat();
     updateFull();
     updatehp();
@@ -327,7 +327,7 @@ function addcha(amount) {
       return
   
     charisma = Math.max(charisma + amount, 1);
-    statPoint = statPoint - amount
+    statPoint -= amount
     updatestat();
     updateFull();
 }
@@ -343,7 +343,7 @@ function addagi(amount) {
       return
   
     agility = Math.max(agility + amount, 1);
-    statPoint = statPoint - amount
+    statPoint -= amount
     updatestat();
     updateFull();
 }
@@ -359,7 +359,7 @@ function addper(amount) {
       return
   
     perception = Math.max(perception + amount, 1);
-    statPoint = statPoint - amount
+    statPoint -= amount
     updatestat();
     updateFull();
 }
@@ -375,7 +375,7 @@ function addluc(amount) {
       return
 
     luck = Math.max(luck + amount, 1);
-    statPoint = statPoint - amount
+    statPoint -= amount
     updatestat();
     updateFull();
 }
@@ -434,7 +434,7 @@ function damageHealth() {
     return
   }
 
-  actualHitPoint = actualHitPoint - hpInput
+  actualHitPoint -= hpInput
   let actualHitPointDiv = document.getElementById("actualHitPointDiv");
   actualHitPointDiv.innerText = actualHitPoint;
   if (actualHitPoint <= 0) {
@@ -455,7 +455,7 @@ function healHealth() {
     return
   }
 
-  actualHitPoint = actualHitPoint +  hpInput
+  actualHitPoint +=  hpInput
   let actualHitPointDiv = document.getElementById("actualHitPointDiv");
   actualHitPointDiv.innerText = actualHitPoint;
   if (actualHitPoint >= maxHitPoint) {
@@ -477,7 +477,7 @@ function costMana() {
     return
   }
 
-  actualManaPoint = actualManaPoint - manaInput
+  actualManaPoint -= manaInput
   let actualManaPointDiv = document.getElementById("actualManaPointDiv");
   actualManaPointDiv.innerText = actualManaPoint;
   if (actualManaPoint <= 0) {
@@ -498,7 +498,7 @@ function regenMana() {
     return
   }
 
-  actualManaPoint = actualManaPoint +  manaInput
+  actualManaPoint +=  manaInput
   let actualManaPointDiv = document.getElementById("actualManaPointDiv");
   actualManaPointDiv.innerText = actualManaPoint;
   if (actualManaPoint >= maxManaPoint) {
