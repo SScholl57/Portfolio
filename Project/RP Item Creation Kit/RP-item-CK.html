@@ -16,6 +16,7 @@
 
       <div id="authForm">
         <h2>Sign In</h2>
+        <input type="text" placeholder="pseudo" id="userPseudo">
         <input type="email" placeholder="email" id="userEmail">
         <input type="password" placeholder="password" id="userPassword"> <br><br>
         <button id="signUpButton">Account Creation</button>
@@ -24,49 +25,16 @@
       </div>
 
        <div>
-        <input id="objectName" type="text">
-        <label for="objectType">Choose a Type:</label>
-        <select name="objectTypeSelect" id="objectType">
-            <option value="">Please choose an option</option>
-            <option value="Weapon">Weapon</option>
-            <option value="Armor">Armor</option>
-            <option value="Potion">Potion</option>
-            <option value="Scroll">Scroll</option>
-            <option value="Material">Material</option>
-            <option value="Money">Money</option>
-            <option value="Food">Food</option>
-        </select>
-        <select name="objectLegendarySelect" id="objectLegendaryMod">
-          <option value="No Legendary">No Legendary</option>
-          <option value="Powerful">Powerful</option>
-          <option value="Quickness">Quickness</option>
-          <option value="Lucky">Lucky</option>
-          <option value="Endurance">Endurance</option>
-          <option value="Smart">Smart</option>
-          <option value="Cunning">Cunning</option>
-          <option value="Athlete">Athlete</option>
-          <option value="Detective">Detective</option>
-          <option value="Strong">Strong</option>
-          <option value="Genius">Genius</option>
-          <option value="Purity">Purity</option>
-        </select>
-        <input id="objectGoldValue" type="number">
-        <button id="objectCreate">Create</button>
-
         
-        <button id="objectRemove">Remove</button>
-
-        <select name="objectRemoveSelect" id="objectRemoveList"></select>
-        
-        <div id="creationKit">
+        <div id="creationKitForm">
           <div id="creationCommon">
             <select name="objectTypeList" id="objectTypeList">
+              <option value="DefaultObjectTypeList">Please select an item type</option>
               <option value="Weapon">Weapon</option>
               <option value="Armor">Armor</option>
               <option value="Potion">Potion</option>
               <option value="Scroll">Scroll</option>
               <option value="Material">Material</option>
-              <option value="Money">Money</option>
               <option value="Food">Food</option>
             </select>
             <div id="creationName">
@@ -79,11 +47,11 @@
                 <option value="Divine">Divine</option>
                 <option value="Primordial">Primordial</option>
               </select>
-              <input id="" type="text" placeholder="Item's name">
+              <input id="objectName" type="text" placeholder="Item's name">
             </div>
             <div id="creationBasic">
-              <input id="" type="number" placeholder="Weight">
-              <input id="" type="number" placeholder="Gold value">
+              <input id="objectWeightValue" type="number" placeholder="Weight">
+              <input id="objectGoldValue" type="number" placeholder="Gold value">
             </div>
           </div>
           <div id="creationVariable">
@@ -101,8 +69,10 @@
               </select>
               <label for="weaponTwoHanded">Two handed</label>
               <input type="checkbox" id="weaponTwoHanded" name="weaponTwoHanded">
-              <input id="weaponDamageValue" type="number" placeholder="0">
-              <select name="weaponLegendaryMod" id="weaponLegendaryMod"></select>
+              <input id="weaponDamageValue" type="number" placeholder="Weapon Damage Value">
+              <select name="weaponLegendaryMod" id="weaponLegendaryMod">
+                <option value="ToDeleteWeaponLegendary">Legendary option</option>
+              </select>
             </div>
             <div id="creationArmor">
               <select name="armorType" id="armorType">
@@ -110,26 +80,42 @@
                 <option value="Medium">Medium</option>
                 <option value="Heavy">Heavy</option>
               </select>
-              <input id="armorClassValue" type="number" placeholder="0">
-              <select name="armorLegendaryMod" id="armorLegendaryMod"></select>
+              <input id="armorClassValue" type="number" placeholder="Armor Value">
+              <select name="armorLegendaryMod" id="armorLegendaryMod">
+                <option value="ToDeleteArmorLegendary">Legendary option</option>
+              </select>
             </div>
             <div id="creationPotion">
-
+              <select name="potionType" id="potionType">
+                <option value="Poison">Poison</option>
+                <option value="Healing">Healing</option>
+              </select>
+              <input id="PotionPowerValue" type="number" placeholder="Potion Power Value">
             </div>
             <div id="creationScroll">
-
+              <select name="scrollType" id="scrollType"> 
+              <option  value="placeholdertodelete-SpellList">none</option>
+              </select>
             </div>
             <div id="creationMaterial">
-
-            </div>
-            <div id="creationMoney">
-
+              <select name="materialType" id="materialType">
+                <option value="materialtypeList">material type</option>
+              </select>
             </div>
             <div id="creationFood">
-
+              <select name="foodType" id="foodType">
+                <option value="raw">Raw</option>
+                <option value="cooked">Cooked</option>
+                <option value="homemade">Home made</option>
+                <option value="Spoiled">Spoiled</option>
+              </select>
             </div>
           </div>
-          <button id="">Create</button>
+          <button id="objectCreate">Create</button>
+
+          <button id="objectRemove">Remove</button>
+
+          <select name="objectRemoveSelect" id="objectRemoveList"></select>
         </div>
        </div>
 
@@ -157,26 +143,34 @@
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
     const analytics = getAnalytics(app);
-    
+    const userPseudo = document.querySelector("#userPseudo")
     const userEmail = document.querySelector("#userEmail");
     const userPassword = document.querySelector("#userPassword");
     const authForm = document.querySelector("#authForm")
     const signUpButton = document.querySelector("#signUpButton")
     const signInButton = document.querySelector("#signInButton")
+    let user;
    
     const userSignUp = async() => {
+      const signUpPseudo = userPseudo.value;
       const signUpEmail = userEmail.value;
       const signUpPassword = userPassword.value;
       createUserWithEmailAndPassword(auth, signUpEmail, signUpPassword)
       .then((userCredential) => {
-        const user = userCredential.user;
-        console.log(user);
+        user = userCredential.user;
+        const userRef = ref(db, "users/" + user.uid)
+        set(userRef,{
+          Pseudo: userPseudo.value,
+          Email: userEmail.value,
+          uID : user.uid,
+        })
         alert("Account Created !");
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         console.log(errorCode + errorMessage)
+        
       })
     }
    
@@ -187,7 +181,9 @@
       const signInPassword = userPassword.value;
       signInWithEmailAndPassword(auth, signInEmail, signInPassword)
       .then((userCredential) => {
-        const user = userCredential.user;
+        user = userCredential.user;
+        console.log(user.uid)
+        creationKitForm.style.display="block"
         alert("You have signed in !")
       })
       .catch((error) => {
@@ -230,20 +226,19 @@
         selectElement.appendChild(option);
       }
     }    
-   
+    
+    
+
     loadItems().then(fillItemsList)
-
-
-
-
    
     function InsertData() {
       if(objectName.value.length != 0){
-        set(ref(db, "Items/" + objectName.value), {
+        const itemRef = ref(db, "Items/" + user.uid + "/" + objectTypeList.value + "/" + objectName.value)
+        
+        set(itemRef, {
             Name: objectName.value,
-            Type: objectType.value,
-            Legendary: objectLegendaryMod.value,
-            Value: objectGoldValue.value
+            Type: objectTypeList.value,
+            Value: objectGoldValue.value,
         })
         .then(()=> {
             const selectElement = document.getElementById('objectRemoveList')
@@ -251,6 +246,7 @@
             option.value = objectName.value;
             option.text = objectName.value;
             selectElement.appendChild(option);
+            console.log(user.uid)
             alert("Object Created !")
             
             
@@ -268,8 +264,7 @@
       if(objectName.value.length != 0){
         remove(ref(db, "Items/" + objectName.value), {
             Name: objectName.value,
-            Type: objectType.value,
-            Legendary: objectLegendaryMod.value,
+            Type: objectTypeList.value,
             Value: objectGoldValue.value,
         })
         .then(()=> {
@@ -323,33 +318,62 @@
       }
     }
 
-
+    creationKitForm.style.display="none"
     creationWeapon.style.display = "none"
     creationArmor.style.display = "none"
+    creationPotion.style.display = "none"
+    creationScroll.style.display = "none"
+    creationMaterial.style.display = "none"
+    creationFood.style.display = "none"
     function creationKit(){
       let objectTypeList = document.getElementById("objectTypeList").value
        if (objectTypeList === "Weapon"){
         creationWeapon.style.display = "block"
         creationArmor.style.display = "none"
+        creationPotion.style.display = "none"
+        creationScroll.style.display = "none"
+        creationMaterial.style.display = "none"
+        creationFood.style.display = "none"
        }
        else if (objectTypeList === "Armor"){
         creationWeapon.style.display = "none"
         creationArmor.style.display = "block"
+        creationPotion.style.display = "none"
+        creationScroll.style.display = "none"
+        creationMaterial.style.display = "none"
+        creationFood.style.display = "none"
       }
-      else if (objectTypeList === "Potion" && displayKit.style.display ==="none"){
-        displayKit.style.display = "block"
+      else if (objectTypeList === "Potion"){
+        creationWeapon.style.display = "none"
+        creationArmor.style.display = "none"
+        creationPotion.style.display = "block"
+        creationScroll.style.display = "none"
+        creationMaterial.style.display = "none"
+        creationFood.style.display = "none"
       }
-      else if (objectTypeList === "Scroll" && displayKit.style.display ==="none"){
-        displayKit.style.display = "block"
+      else if (objectTypeList === "Scroll"){
+        creationWeapon.style.display = "none"
+        creationArmor.style.display = "none"
+        creationPotion.style.display = "none"
+        creationScroll.style.display = "block"
+        creationMaterial.style.display = "none"
+        creationFood.style.display = "none"
       }
-      else if (objectTypeList === "Material" && displayKit.style.display ==="none"){
-        displayKit.style.display = "block"
+      else if (objectTypeList === "Material"){
+        creationWeapon.style.display = "none"
+        creationArmor.style.display = "none"
+        creationPotion.style.display = "none"
+        creationScroll.style.display = "none"
+        creationMaterial.style.display = "block"
+        creationFood.style.display = "none"
       }
-      else if (objectTypeList === "Money" && displayKit.style.display ==="none"){
-        displayKit.style.display = "block"
-      }
-      else if (objectTypeList === "Food" && displayKit.style.display ==="none"){
-        displayKit.style.display = "block"
+      else if (objectTypeList === "Food"){
+        creationWeapon.style.display = "none"
+        creationArmor.style.display = "none"
+        creationPotion.style.display = "none"
+        creationScroll.style.display = "none"
+        creationMaterial.style.display = "none"
+        creationFood.style.display = "block"
       }
     }
 
