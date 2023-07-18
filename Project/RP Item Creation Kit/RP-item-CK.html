@@ -284,7 +284,7 @@
     
    
    
-    objectCreateBtn.addEventListener('click', InsertData);
+    objectCreateBtn.addEventListener('click', CreateItem);
     objectRemoveBtn.addEventListener('click', RemoveData)
 
     class Items {
@@ -408,13 +408,14 @@
 
 
     async function CreateItem() {
+      if(objectName.value.length != 0){
       const itemRef = ref(db, "Items/" + user.uid + "/" + objectTypeList.value + "/" + objectName.value)
       let itemRarity = document.querySelector("#objectRarityList").value
       let itemName = document.querySelector("#objectName").value
       let itemType = document.querySelector("#objectTypeList").value
       let itemGoldValue = document.querySelector("#objectGoldValue").value
       let itemWeightValue = document.querySelector("#objectWeightValue").value
-      if (itemType === "Weapon"){
+        if (itemType === "Weapon"){
         let weaponType = document.querySelector("#weaponType").value
         let weaponTwoHanded = document.querySelector("#weaponTwoHanded").value
         let weaponDamageValue = document.querySelector("#weaponDamageValue").value
@@ -422,13 +423,38 @@
         const weapon = new Weapon(itemRarity, itemName, itemType, itemGoldValue, itemWeightValue, weaponType, weaponTwoHanded, weaponDamageValue, weaponLegendaryMod)
         set(itemRef, weapon)
       }
-      else if (itemType === "Armor"){
+        else if (itemType === "Armor"){
         let armorType = document.querySelector("#armorType").value
         let armorClassValue = document.querySelector("#armorClassValue").value
         let armorLegendaryMod = document.querySelector("#armorLegendaryMod").value
         const armor = new Armor(itemRarity, itemName, itemType, itemGoldValue, itemWeightValue, armorType, armorClassValue, armorLegendaryMod)
         set(itemRef, armor)
       }
+        else if (itemType === "Potion"){
+        let potionType = document.querySelector("#potionType").value
+        let potionPowerValue = document.querySelector("#potionPowerValue").value
+        const potion = new Potion(itemRarity, itemName, itemType, itemGoldValue, itemWeightValue, potionType, potionPowerValue)
+        set(itemRef, potion)
+      }
+        else if (itemType === "Scroll"){
+        let scrollType = document.querySelector("#scrollType").value
+        const scroll = new Scroll(itemRarity, itemName, itemType, itemGoldValue, itemWeightValue, scrollType)
+        set(itemRef, scroll)
+      }
+        else if (itemType === "Material"){
+        let materialType = document.querySelector("#materialType").value
+        const material = new Material(itemRarity, itemName, itemType, itemGoldValue, itemWeightValue, materialType)
+        set(itemRef, material)
+      }
+        else if (itemType === "Food"){
+        let foodType = document.querySelector("#foodType").value
+        const food = new Food(itemRarity, itemName, itemType, itemGoldValue, itemWeightValue, foodType)
+        set(itemRef, food)
+      }
+    }
+    else{
+      alert("Enter a name of an object")
+    }
 
       return null
     }
