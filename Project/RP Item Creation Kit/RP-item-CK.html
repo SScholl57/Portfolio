@@ -90,7 +90,7 @@
                 <option value="Poison">Poison</option>
                 <option value="Healing">Healing</option>
               </select>
-              <input id="PotionPowerValue" type="number" placeholder="Potion Power Value">
+              <input id="potionPowerValue" type="number" placeholder="Potion Power Value">
             </div>
             <div id="creationScroll">
               <select name="scrollType" id="scrollType"> 
@@ -182,7 +182,6 @@
       signInWithEmailAndPassword(auth, signInEmail, signInPassword)
       .then((userCredential) => {
         user = userCredential.user;
-        console.log(user.uid)
         creationKitForm.style.display="block"
         alert("You have signed in !")
       })
@@ -246,7 +245,6 @@
             option.value = objectName.value;
             option.text = objectName.value;
             selectElement.appendChild(option);
-            console.log(user.uid)
             alert("Object Created !")
             
             
@@ -300,13 +298,14 @@
     }
 
     class Weapon extends Items {
-      constructor(itemName,itemRarity, itemType,itemGoldValue, itemWeightValue, weaponType, weaponTwoHanded, weaponDamageValue, weaponLegendaryMod,){
-        super(itemName,itemRarity, itemType,itemGoldValue, itemWeightValue)
+      constructor(itemName, itemRarity, itemType, itemGoldValue, itemWeightValue, weaponType, weaponTwoHanded, weaponDamageValue, weaponLegendaryMod,){
+        super(itemName, itemRarity, itemType, itemGoldValue, itemWeightValue)
         this.weaponType = weaponType
         this.weaponTwoHanded = weaponTwoHanded
         this.weaponDamageValue = weaponDamageValue
         this.weaponLegendaryMod = weaponLegendaryMod
       }
+  
     }
 
     class Armor extends Items {
@@ -315,6 +314,31 @@
         this.armorType = armorType
         this.armorClassValue = armorClassValue
         this.armorLegendaryMod = armorLegendaryMod
+      }
+    }
+    class Potion extends Items{
+      constructor (itemName,itemRarity, itemType,itemGoldValue, itemWeightValue, potionType, potionPowerValue){
+        super(itemName,itemRarity, itemType,itemGoldValue, itemWeightValue)
+        this.potionType = potionType
+        this.potionPowerValue = potionPowerValue
+      }
+    }
+    class Scroll extends Items{
+      constructor (itemName,itemRarity, itemType,itemGoldValue, itemWeightValue, scrollType,){
+        super(itemName,itemRarity, itemType,itemGoldValue, itemWeightValue)
+        this.scrollType = scrollType
+      }
+    }
+    class Material extends Items{
+      constructor (itemName,itemRarity, itemType,itemGoldValue, itemWeightValue, materialType){
+        super(itemName,itemRarity, itemType,itemGoldValue, itemWeightValue)
+        this.materialType = materialType
+      }
+    }
+    class Food extends Items{
+      constructor (itemName,itemRarity, itemType,itemGoldValue, itemWeightValue, foodType){
+        super(itemName,itemRarity, itemType,itemGoldValue, itemWeightValue)
+        this.foodType = foodType
       }
     }
 
@@ -384,21 +408,26 @@
 
 
     async function CreateItem() {
-      let itemType = document.querySelector("#objectTypeList").value()
+      const itemRef = ref(db, "Items/" + user.uid + "/" + objectTypeList.value + "/" + objectName.value)
+      let itemRarity = document.querySelector("#objectRarityList").value
+      let itemName = document.querySelector("#objectName").value
+      let itemType = document.querySelector("#objectTypeList").value
+      let itemGoldValue = document.querySelector("#objectGoldValue").value
+      let itemWeightValue = document.querySelector("#objectWeightValue").value
       if (itemType === "Weapon"){
-        let itemName = document.querySelector("#Est une String").value()
-        let itemType = document.querySelector("#Est une String correspondant à une classe").value()
-        let itemGoldValue = document.querySelector("#Est une Valeur").value()
-        let itemWeightValue = document.querySelector("#Est une Valeur").value()
-        let weaponType = document.querySelector("#Est une String").value()
-        let weaponIgnoreResist = document.querySelector("#Est un Boolean").value()
-        let weaponDamageValue = document.querySelector("#Est une Valeur").value()
-        let weaponLegendaryMod = document.querySelector("#Est une String").value()
-        let weaponUnique = document.querySelector("#Est un Boolean").value()
-        return new Weapon(itemName, itemType, itemGoldValue, itemWeightValue, weaponType, weaponIgnoreResist, weaponDamageValue, weaponLegendaryMod, weaponUnique)
+        let weaponType = document.querySelector("#weaponType").value
+        let weaponTwoHanded = document.querySelector("#weaponTwoHanded").value
+        let weaponDamageValue = document.querySelector("#weaponDamageValue").value
+        let weaponLegendaryMod = document.querySelector("#weaponLegendaryMod").value
+        const weapon = new Weapon(itemRarity, itemName, itemType, itemGoldValue, itemWeightValue, weaponType, weaponTwoHanded, weaponDamageValue, weaponLegendaryMod)
+        set(itemRef, weapon)
       }
       else if (itemType === "Armor"){
-        return new Armor()
+        let armorType = document.querySelector("#armorType").value
+        let armorClassValue = document.querySelector("#armorClassValue").value
+        let armorLegendaryMod = document.querySelector("#armorLegendaryMod").value
+        const armor = new Armor(itemRarity, itemName, itemType, itemGoldValue, itemWeightValue, armorType, armorClassValue, armorLegendaryMod)
+        set(itemRef, armor)
       }
 
       return null
