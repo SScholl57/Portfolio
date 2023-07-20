@@ -115,7 +115,14 @@
 
           <button id="objectRemove">Remove</button>
 
-          <select name="objectRemoveSelect" id="objectRemoveList"></select>
+          <select name="objectCategorieSelect" id="objectCategorieList"></select>
+          <select name="objectArmorSelect" id="objectArmorList"></select>
+          <select name="objectFoodSelect" id="objectFoodList"></select>
+          <select name="objectPotionSelect" id="objectPotionList"></select>
+          <select name="objectMaterialSelect" id="objectMaterialList"></select>
+          <select name="objectScrollSelect" id="objectScrollList"></select>
+          <select name="objectWeaponSelect" id="objectWeaponList"></select>
+
         </div>
        </div>
 
@@ -183,6 +190,7 @@
       .then((userCredential) => {
         user = userCredential.user;
         creationKitForm.style.display="block"
+        loadItems().then(onItemsLoaded)
         alert("You have signed in !")
       })
       .catch((error) => {
@@ -205,30 +213,106 @@
     var objectGoldValue = document.querySelector("#objectGoldValue")
     var objectCreateBtn = document.querySelector("#objectCreate")
     var objectRemoveBtn = document.querySelector("#objectRemove")
+    var itemListBtn = document.querySelector("#objectCategorieList")
    
     
     let items = []
     async function loadItems(){
-      const snapshot = await get(ref(db, "Items/"))
+      const snapshot = await get(ref(db, "Items/" + user.uid))
       items = snapshot.val()
       console.log(items)
     }
+
+    function onItemsLoaded(){
+      fillCategorieList()
+      fillArmorList()
+      fillFoodList()
+      fillMaterialList()
+      fillPotionList()
+      fillScrollList()
+      fillWeaponList()
+    }
    
-    function fillItemsList(){
-      const selectElement = document.getElementById('objectRemoveList')
+    function fillCategorieList(){
+      const selectElement = document.getElementById('objectCategorieList')
       for(const key in items){
         const item = items[key]
-        const nameValue = item.Name
+        const nameValue = key
         const option = document.createElement('option');
         option.value = key;
         option.text = nameValue;
         selectElement.appendChild(option);
       }
-    }    
-    
-    
+    }
+    function fillArmorList(){
+      const selectElement = document.getElementById('objectArmorList')
+      for(const key in items.Armor){
+        const item = items.Armor[key]
+        const nameValue = item.itemName
+        const option = document.createElement('option');
+        option.value = key;
+        option.text = nameValue;
+        selectElement.appendChild(option);
+      }
+    }   
 
-    loadItems().then(fillItemsList)
+    function fillFoodList(){
+      const selectElement = document.getElementById('objectFoodList')
+      for(const key in items.Food){
+        const item = items.Food[key]
+        const nameValue = item.itemName
+        const option = document.createElement('option');
+        option.value = key;
+        option.text = nameValue;
+        selectElement.appendChild(option);
+      }
+    }  
+
+    function fillMaterialList(){
+      const selectElement = document.getElementById('objectMaterialList')
+      for(const key in items.Material){
+        const item = items.Material[key]
+        const nameValue = item.itemName
+        const option = document.createElement('option');
+        option.value = key;
+        option.text = nameValue;
+        selectElement.appendChild(option);
+      }
+    }   
+
+    function fillPotionList(){
+      const selectElement = document.getElementById('objectPotionList')
+      for(const key in items.Potion){
+        const item = items.Potion[key]
+        const nameValue = item.itemName
+        const option = document.createElement('option');
+        option.value = key;
+        option.text = nameValue;
+        selectElement.appendChild(option);
+      }
+    }  
+    function fillScrollList(){
+      const selectElement = document.getElementById('objectScrollList')
+      for(const key in items.Scroll){
+        const item = items.Scroll[key]
+        const nameValue = item.itemName
+        const option = document.createElement('option');
+        option.value = key;
+        option.text = nameValue;
+        selectElement.appendChild(option);
+      }
+    }  
+    function fillWeaponList(){
+      const selectElement = document.getElementById('objectWeaponList')
+      for(const key in items.Weapon){
+        const item = items.Weapon[key]
+        const nameValue = item.itemName
+        const option = document.createElement('option');
+        option.value = key;
+        option.text = nameValue;
+        selectElement.appendChild(option);
+      }
+    }  
    
     function InsertData() {
       if(objectName.value.length != 0){
@@ -240,7 +324,7 @@
             Value: objectGoldValue.value,
         })
         .then(()=> {
-            const selectElement = document.getElementById('objectRemoveList')
+            const selectElement = document.getElementById('objectCategorieList')
             const option = document.createElement('option');
             option.value = objectName.value;
             option.text = objectName.value;
@@ -267,7 +351,7 @@
         })
         .then(()=> {
             alert("Object removed !")
-            const selectElement = document.getElementById('objectRemoveList')
+            const selectElement = document.getElementById('objectCategorieList')
             const option = document.createElement('option');
             option.value = objectName.value;
             option.text = objectName.value;
@@ -283,12 +367,67 @@
     }
     
    
-   
+    function toggleList(){
+      let objectCategorieList = document.querySelector('#objectCategorieList')
+      if(objectCategorieList.value === Armor){
+        console.log("Test ici")
+        objectArmorList.style.display = "block"
+        objectFoodList.style.display = "none"
+        objectPotionList.style.display = "none"
+        objectMaterialList.style.display = "none"
+        objectScrollList.style.display = "none"
+        objectWeaponList.style.display = "none"
+      }
+      else if(objectCategorieList === Food){
+        objectArmorList.style.display = "none"
+        objectFoodList.style.display = "block"
+        objectPotionList.style.display = "none"
+        objectMaterialList.style.display = "none"
+        objectScrollList.style.display = "none"
+        objectWeaponList.style.display = "none"
+      }
+      else if(objectCategorieList === Potion){
+        objectArmorList.style.display = "none"
+        objectFoodList.style.display = "none"
+        objectPotionList.style.display = "block"
+        objectMaterialList.style.display = "none"
+        objectScrollList.style.display = "none"
+        objectWeaponList.style.display = "none"
+      }
+      else if(objectCategorieList === Material){
+        objectArmorList.style.display = "none"
+        objectFoodList.style.display = "none"
+        objectPotionList.style.display = "none"
+        objectMaterialList.style.display = "block"
+        objectScrollList.style.display = "none"
+        objectWeaponList.style.display = "none"
+      }
+      else if(objectCategorieList === Scroll){
+        objectArmorList.style.display = "none"
+        objectFoodList.style.display = "none"
+        objectPotionList.style.display = "none"
+        objectMaterialList.style.display = "none"
+        objectScrollList.style.display = "block"
+        objectWeaponList.style.display = "none"
+      }
+      else if(objectCategorieList === Weapon){
+        objectArmorList.style.display = "none"
+        objectFoodList.style.display = "none"
+        objectPotionList.style.display = "none"
+        objectMaterialList.style.display = "none"
+        objectScrollList.style.display = "none"
+        objectWeaponList.style.display = "block"
+      }
+
+    }
+
+    itemListBtn.addEventListener('click', toggleList)
     objectCreateBtn.addEventListener('click', CreateItem);
     objectRemoveBtn.addEventListener('click', RemoveData)
 
     class Items {
-      constructor(itemName,itemRarity, itemType,itemGoldValue, itemWeightValue){
+      constructor(itemID, itemName,itemRarity, itemType,itemGoldValue, itemWeightValue){
+        this.itemID = itemID
         this.itemName = itemName
         this.itemRarity = itemRarity
         this.itemType = itemType
@@ -298,8 +437,8 @@
     }
 
     class Weapon extends Items {
-      constructor(itemName, itemRarity, itemType, itemGoldValue, itemWeightValue, weaponType, weaponTwoHanded, weaponDamageValue, weaponLegendaryMod,){
-        super(itemName, itemRarity, itemType, itemGoldValue, itemWeightValue)
+      constructor(itemID, itemName, itemRarity, itemType, itemGoldValue, itemWeightValue, weaponType, weaponTwoHanded, weaponDamageValue, weaponLegendaryMod,){
+        super(itemID, itemName, itemRarity, itemType, itemGoldValue, itemWeightValue)
         this.weaponType = weaponType
         this.weaponTwoHanded = weaponTwoHanded
         this.weaponDamageValue = weaponDamageValue
@@ -309,39 +448,46 @@
     }
 
     class Armor extends Items {
-      constructor (itemName,itemRarity, itemType,itemGoldValue, itemWeightValue, armorType, armorClassValue, armorLegendaryMod){
-        super(itemName,itemRarity, itemType,itemGoldValue, itemWeightValue)
+      constructor (itemID, itemName,itemRarity, itemType, itemGoldValue, itemWeightValue, armorType, armorClassValue, armorLegendaryMod){
+        super(itemID, itemName,itemRarity, itemType,itemGoldValue, itemWeightValue)
         this.armorType = armorType
         this.armorClassValue = armorClassValue
         this.armorLegendaryMod = armorLegendaryMod
       }
     }
     class Potion extends Items{
-      constructor (itemName,itemRarity, itemType,itemGoldValue, itemWeightValue, potionType, potionPowerValue){
-        super(itemName,itemRarity, itemType,itemGoldValue, itemWeightValue)
+      constructor (itemID, itemName,itemRarity, itemType,itemGoldValue, itemWeightValue, potionType, potionPowerValue){
+        super(itemID, itemName,itemRarity, itemType,itemGoldValue, itemWeightValue)
         this.potionType = potionType
         this.potionPowerValue = potionPowerValue
       }
     }
     class Scroll extends Items{
-      constructor (itemName,itemRarity, itemType,itemGoldValue, itemWeightValue, scrollType,){
-        super(itemName,itemRarity, itemType,itemGoldValue, itemWeightValue)
+      constructor (itemID, itemName,itemRarity, itemType,itemGoldValue, itemWeightValue, scrollType,){
+        super(itemID, itemName,itemRarity, itemType,itemGoldValue, itemWeightValue)
         this.scrollType = scrollType
       }
     }
     class Material extends Items{
-      constructor (itemName,itemRarity, itemType,itemGoldValue, itemWeightValue, materialType){
-        super(itemName,itemRarity, itemType,itemGoldValue, itemWeightValue)
+      constructor (itemID, itemName,itemRarity, itemType,itemGoldValue, itemWeightValue, materialType){
+        super(itemID, itemName,itemRarity, itemType,itemGoldValue, itemWeightValue)
         this.materialType = materialType
       }
     }
     class Food extends Items{
-      constructor (itemName,itemRarity, itemType,itemGoldValue, itemWeightValue, foodType){
-        super(itemName,itemRarity, itemType,itemGoldValue, itemWeightValue)
+      constructor (itemID, itemName,itemRarity, itemType,itemGoldValue, itemWeightValue, foodType){
+        super(itemID, itemName,itemRarity, itemType,itemGoldValue, itemWeightValue)
         this.foodType = foodType
       }
     }
 
+    
+    objectArmorList.style.display = "none"
+    objectFoodList.style.display = "none"
+    objectPotionList.style.display = "none"
+    objectMaterialList.style.display = "none"
+    objectScrollList.style.display = "none"
+    objectWeaponList.style.display = "none"
     creationKitForm.style.display="none"
     creationWeapon.style.display = "none"
     creationArmor.style.display = "none"
@@ -409,7 +555,8 @@
 
     async function CreateItem() {
       if(objectName.value.length != 0){
-      const itemRef = ref(db, "Items/" + user.uid + "/" + objectTypeList.value + "/" + objectName.value)
+      let itemID = crypto.randomUUID()
+      const itemRef = ref(db, "Items/" + user.uid + "/" + objectTypeList.value + "/" + itemID)
       let itemRarity = document.querySelector("#objectRarityList").value
       let itemName = document.querySelector("#objectName").value
       let itemType = document.querySelector("#objectTypeList").value
@@ -420,35 +567,35 @@
         let weaponTwoHanded = document.querySelector("#weaponTwoHanded").value
         let weaponDamageValue = document.querySelector("#weaponDamageValue").value
         let weaponLegendaryMod = document.querySelector("#weaponLegendaryMod").value
-        const weapon = new Weapon(itemRarity, itemName, itemType, itemGoldValue, itemWeightValue, weaponType, weaponTwoHanded, weaponDamageValue, weaponLegendaryMod)
+        const weapon = new Weapon(itemID, itemName, itemRarity, itemType, itemGoldValue, itemWeightValue, weaponType, weaponTwoHanded, weaponDamageValue, weaponLegendaryMod)
         set(itemRef, weapon)
       }
         else if (itemType === "Armor"){
         let armorType = document.querySelector("#armorType").value
         let armorClassValue = document.querySelector("#armorClassValue").value
         let armorLegendaryMod = document.querySelector("#armorLegendaryMod").value
-        const armor = new Armor(itemRarity, itemName, itemType, itemGoldValue, itemWeightValue, armorType, armorClassValue, armorLegendaryMod)
+        const armor = new Armor(itemID, itemName, itemRarity, itemType, itemGoldValue, itemWeightValue, armorType, armorClassValue, armorLegendaryMod)
         set(itemRef, armor)
       }
         else if (itemType === "Potion"){
         let potionType = document.querySelector("#potionType").value
         let potionPowerValue = document.querySelector("#potionPowerValue").value
-        const potion = new Potion(itemRarity, itemName, itemType, itemGoldValue, itemWeightValue, potionType, potionPowerValue)
+        const potion = new Potion(itemID, itemName, itemRarity, itemType, itemGoldValue, itemWeightValue, potionType, potionPowerValue)
         set(itemRef, potion)
       }
         else if (itemType === "Scroll"){
         let scrollType = document.querySelector("#scrollType").value
-        const scroll = new Scroll(itemRarity, itemName, itemType, itemGoldValue, itemWeightValue, scrollType)
+        const scroll = new Scroll(itemID, itemName, itemRarity, itemType, itemGoldValue, itemWeightValue, scrollType)
         set(itemRef, scroll)
       }
         else if (itemType === "Material"){
         let materialType = document.querySelector("#materialType").value
-        const material = new Material(itemRarity, itemName, itemType, itemGoldValue, itemWeightValue, materialType)
+        const material = new Material(itemID, itemName, itemRarity, itemType, itemGoldValue, itemWeightValue, materialType)
         set(itemRef, material)
       }
         else if (itemType === "Food"){
         let foodType = document.querySelector("#foodType").value
-        const food = new Food(itemRarity, itemName, itemType, itemGoldValue, itemWeightValue, foodType)
+        const food = new Food(itemID, itemName, itemRarity, itemType, itemGoldValue, itemWeightValue, foodType)
         set(itemRef, food)
       }
     }
