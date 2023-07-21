@@ -12,15 +12,15 @@
 
 <body>
 
-    <main class="">
+    <main class="flexv">
 
-      <div id="authForm">
+      <div id="authForm" class="flexv justifycontent-center alignself-center">
         <h2>Sign In</h2>
-        <input type="text" placeholder="pseudo" id="userPseudo">
-        <input type="email" placeholder="email" id="userEmail">
-        <input type="password" placeholder="password" id="userPassword"> <br><br>
-        <button id="signUpButton">Account Creation</button>
-        <button id="signInButton">Connect</button>
+        <input type="text" placeholder="pseudo" id="userPseudo" class="marginbottom_5">
+        <input type="email" placeholder="email" id="userEmail" class="marginbottom_5">
+        <input type="password" placeholder="password" id="userPassword" class="marginbottom_5"> <br><br>
+        <button id="signUpButton" class="marginbottom_5">Account Creation</button>
+        <button id="signInButton" class="marginbottom_5">Connect</button>
 
       </div>
 
@@ -239,7 +239,7 @@
         const item = items[key]
         const nameValue = key
         const option = document.createElement('option');
-        option.value = key;
+        option.value = "Categorie_" + key;
         option.text = nameValue;
         selectElement.appendChild(option);
       }
@@ -314,34 +314,6 @@
       }
     }  
    
-    function InsertData() {
-      if(objectName.value.length != 0){
-        const itemRef = ref(db, "Items/" + user.uid + "/" + objectTypeList.value + "/" + objectName.value)
-        
-        set(itemRef, {
-            Name: objectName.value,
-            Type: objectTypeList.value,
-            Value: objectGoldValue.value,
-        })
-        .then(()=> {
-            const selectElement = document.getElementById('objectCategorieList')
-            const option = document.createElement('option');
-            option.value = objectName.value;
-            option.text = objectName.value;
-            selectElement.appendChild(option);
-            alert("Object Created !")
-            
-            
-        })
-        .catch((error)=>{
-            alert(error)
-        })
-      }
-      else {
-        alert("Enter a name of an object")
-      }
-    }
-   
     function RemoveData() {
       if(objectName.value.length != 0){
         remove(ref(db, "Items/" + objectName.value), {
@@ -369,7 +341,9 @@
    
     function toggleList(){
       let objectCategorieList = document.querySelector('#objectCategorieList')
-      if(objectCategorieList.value === Armor){
+      console.log(objectCategorieList.value)
+      console.log(typeof objectCategorieList)
+      if(objectCategorieList.value === "Categorie_Armor"){
         console.log("Test ici")
         objectArmorList.style.display = "block"
         objectFoodList.style.display = "none"
@@ -378,7 +352,7 @@
         objectScrollList.style.display = "none"
         objectWeaponList.style.display = "none"
       }
-      else if(objectCategorieList === Food){
+      else if(objectCategorieList.value === "Categorie_Food"){
         objectArmorList.style.display = "none"
         objectFoodList.style.display = "block"
         objectPotionList.style.display = "none"
@@ -386,7 +360,7 @@
         objectScrollList.style.display = "none"
         objectWeaponList.style.display = "none"
       }
-      else if(objectCategorieList === Potion){
+      else if(objectCategorieList.value === "Categorie_Potion"){
         objectArmorList.style.display = "none"
         objectFoodList.style.display = "none"
         objectPotionList.style.display = "block"
@@ -394,7 +368,7 @@
         objectScrollList.style.display = "none"
         objectWeaponList.style.display = "none"
       }
-      else if(objectCategorieList === Material){
+      else if(objectCategorieList.value === "Categorie_Material"){
         objectArmorList.style.display = "none"
         objectFoodList.style.display = "none"
         objectPotionList.style.display = "none"
@@ -402,7 +376,7 @@
         objectScrollList.style.display = "none"
         objectWeaponList.style.display = "none"
       }
-      else if(objectCategorieList === Scroll){
+      else if(objectCategorieList.value === "Categorie_Scroll"){
         objectArmorList.style.display = "none"
         objectFoodList.style.display = "none"
         objectPotionList.style.display = "none"
@@ -410,7 +384,7 @@
         objectScrollList.style.display = "block"
         objectWeaponList.style.display = "none"
       }
-      else if(objectCategorieList === Weapon){
+      else if(objectCategorieList.value === "Categorie_Weapon"){
         objectArmorList.style.display = "none"
         objectFoodList.style.display = "none"
         objectPotionList.style.display = "none"
@@ -495,6 +469,7 @@
     creationScroll.style.display = "none"
     creationMaterial.style.display = "none"
     creationFood.style.display = "none"
+
     function creationKit(){
       let objectTypeList = document.getElementById("objectTypeList").value
        if (objectTypeList === "Weapon"){
@@ -555,48 +530,84 @@
 
     async function CreateItem() {
       if(objectName.value.length != 0){
-      let itemID = crypto.randomUUID()
-      const itemRef = ref(db, "Items/" + user.uid + "/" + objectTypeList.value + "/" + itemID)
-      let itemRarity = document.querySelector("#objectRarityList").value
-      let itemName = document.querySelector("#objectName").value
-      let itemType = document.querySelector("#objectTypeList").value
-      let itemGoldValue = document.querySelector("#objectGoldValue").value
-      let itemWeightValue = document.querySelector("#objectWeightValue").value
+        let itemID = crypto.randomUUID()
+        const itemRef = ref(db, "Items/" + user.uid + "/" + objectTypeList.value + "/" + itemID)
+        let itemRarity = document.querySelector("#objectRarityList").value
+        let itemName = document.querySelector("#objectName").value
+        let itemType = document.querySelector("#objectTypeList").value
+        let itemGoldValue = document.querySelector("#objectGoldValue").value
+        let itemWeightValue = document.querySelector("#objectWeightValue").value
         if (itemType === "Weapon"){
-        let weaponType = document.querySelector("#weaponType").value
-        let weaponTwoHanded = document.querySelector("#weaponTwoHanded").value
-        let weaponDamageValue = document.querySelector("#weaponDamageValue").value
-        let weaponLegendaryMod = document.querySelector("#weaponLegendaryMod").value
-        const weapon = new Weapon(itemID, itemName, itemRarity, itemType, itemGoldValue, itemWeightValue, weaponType, weaponTwoHanded, weaponDamageValue, weaponLegendaryMod)
-        set(itemRef, weapon)
+          let weaponType = document.querySelector("#weaponType").value
+          let weaponTwoHanded = document.querySelector("#weaponTwoHanded").value
+          let weaponDamageValue = document.querySelector("#weaponDamageValue").value
+          let weaponLegendaryMod = document.querySelector("#weaponLegendaryMod").value
+          const weapon = new Weapon(itemID, itemName, itemRarity, itemType, itemGoldValue, itemWeightValue, weaponType, weaponTwoHanded, weaponDamageValue, weaponLegendaryMod)
+          set(itemRef, weapon)
+          const selectElement = document.getElementById('objectWeaponList')
+          const option = document.createElement('option');
+          option.value = objectName.value;
+          option.text = objectName.value;
+          selectElement.appendChild(option);
+          alert("Object Created !")
       }
         else if (itemType === "Armor"){
-        let armorType = document.querySelector("#armorType").value
-        let armorClassValue = document.querySelector("#armorClassValue").value
-        let armorLegendaryMod = document.querySelector("#armorLegendaryMod").value
-        const armor = new Armor(itemID, itemName, itemRarity, itemType, itemGoldValue, itemWeightValue, armorType, armorClassValue, armorLegendaryMod)
-        set(itemRef, armor)
+          let armorType = document.querySelector("#armorType").value
+          let armorClassValue = document.querySelector("#armorClassValue").value
+          let armorLegendaryMod = document.querySelector("#armorLegendaryMod").value
+          const armor = new Armor(itemID, itemName, itemRarity, itemType, itemGoldValue, itemWeightValue, armorType, armorClassValue, armorLegendaryMod)
+          set(itemRef, armor)
+          const selectElement = document.getElementById('objectArmorList')
+          const option = document.createElement('option');
+          option.value = objectName.value;
+          option.text = objectName.value;
+          selectElement.appendChild(option);
+          alert("Object Created !")
       }
         else if (itemType === "Potion"){
-        let potionType = document.querySelector("#potionType").value
-        let potionPowerValue = document.querySelector("#potionPowerValue").value
-        const potion = new Potion(itemID, itemName, itemRarity, itemType, itemGoldValue, itemWeightValue, potionType, potionPowerValue)
-        set(itemRef, potion)
+          let potionType = document.querySelector("#potionType").value
+          let potionPowerValue = document.querySelector("#potionPowerValue").value
+          const potion = new Potion(itemID, itemName, itemRarity, itemType, itemGoldValue, itemWeightValue, potionType, potionPowerValue)
+          set(itemRef, potion)
+          const selectElement = document.getElementById('objectPotionList')
+          const option = document.createElement('option');
+          option.value = objectName.value;
+          option.text = objectName.value;
+          selectElement.appendChild(option);
+          alert("Object Created !")
       }
         else if (itemType === "Scroll"){
-        let scrollType = document.querySelector("#scrollType").value
-        const scroll = new Scroll(itemID, itemName, itemRarity, itemType, itemGoldValue, itemWeightValue, scrollType)
-        set(itemRef, scroll)
+          let scrollType = document.querySelector("#scrollType").value
+          const scroll = new Scroll(itemID, itemName, itemRarity, itemType, itemGoldValue, itemWeightValue, scrollType)
+          set(itemRef, scroll)
+          const selectElement = document.getElementById('objectScrollList')
+          const option = document.createElement('option');
+          option.value = objectName.value;
+          option.text = objectName.value;
+          selectElement.appendChild(option);
+          alert("Object Created !")
       }
         else if (itemType === "Material"){
-        let materialType = document.querySelector("#materialType").value
-        const material = new Material(itemID, itemName, itemRarity, itemType, itemGoldValue, itemWeightValue, materialType)
-        set(itemRef, material)
+          let materialType = document.querySelector("#materialType").value
+          const material = new Material(itemID, itemName, itemRarity, itemType, itemGoldValue, itemWeightValue, materialType)
+          set(itemRef, material)
+          const selectElement = document.getElementById('objectMaterialList')
+          const option = document.createElement('option');
+          option.value = objectName.value;
+          option.text = objectName.value;
+          selectElement.appendChild(option);
+          alert("Object Created !")
       }
         else if (itemType === "Food"){
-        let foodType = document.querySelector("#foodType").value
-        const food = new Food(itemID, itemName, itemRarity, itemType, itemGoldValue, itemWeightValue, foodType)
-        set(itemRef, food)
+          let foodType = document.querySelector("#foodType").value
+          const food = new Food(itemID, itemName, itemRarity, itemType, itemGoldValue, itemWeightValue, foodType)
+          set(itemRef, food)
+          const selectElement = document.getElementById('objectFoodList')
+          const option = document.createElement('option');
+          option.value = objectName.value;
+          option.text = objectName.value;
+          selectElement.appendChild(option);
+          alert("Object Created !")
       }
     }
     else{
