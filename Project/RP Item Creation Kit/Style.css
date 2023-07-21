@@ -33,6 +33,10 @@
   align-self: center;
  }
 
+ .alignitem-center{
+  align-items: center;
+ }
+
  .text-center {
   text-align: center;
  }
@@ -91,6 +95,14 @@
   flex-grow: 100;
 }
 
+.flexgrow_20{
+  flex-grow: 20;
+}
+
+.flexgrow_2{
+  flex-grow: 2;
+}
+
 .alignself-stretch {
   align-self: stretch;
 }
@@ -107,3 +119,4 @@
 .backgroundname{
   background-color: rgb(192, 157, 91);
 }
+

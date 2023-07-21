@@ -11,98 +11,168 @@
 </head>
 
 <body>
-
     <main class="flexv">
-
       <div id="authForm" class="flexv justifycontent-center alignself-center">
         <h2>Sign In</h2>
         <input type="text" placeholder="pseudo" id="userPseudo" class="marginbottom_5">
         <input type="email" placeholder="email" id="userEmail" class="marginbottom_5">
         <input type="password" placeholder="password" id="userPassword" class="marginbottom_5"> <br><br>
-        <button id="signUpButton" class="marginbottom_5">Account Creation</button>
-        <button id="signInButton" class="marginbottom_5">Connect</button>
-
+        <button id="signUpButton" class="marginbottom_5">Create account</button>
+        <button id="signInButton" class="marginbottom_5">Login</button>
       </div>
+      <div class="flexh border">
+        <div id="empty" class="flexgrow_20 border">     
+        </div>
+        <div id="creationKitForm" class="flexv flexgrow_2">
+          <div id="creationCommon" class="flexv spacebetween">
+            <div class="flexh">
+              <div id="gauche" class="flexv justifycontent-center text-center size_50">
+                <p>Categorie :</p>
+              </div>
+              <div id="droite" class="flexv spacebetween alignself-center size_50">
+                <select name="objectTypeList" id="objectTypeList" class="">
+                  <option value="DefaultObjectTypeList">Select an item type</option>
+                  <option value="Weapon">Weapon</option>
+                  <option value="Armor">Armor</option>
+                  <option value="Potion">Potion</option>
+                  <option value="Scroll">Scroll</option>
+                  <option value="Material">Material</option>
+                  <option value="Food">Food</option>
+                </select>
+              </div>
+            </div>
+            <div class="flexh">
+              <div id="gauche" class="flexv justifycontent-center text-center size_50">
+                <p>Item Name :</p>
+              </div>
+              <div id="droite" class="flexv spacebetween alignself-center size_50">
+                <input id="objectName" type="text" placeholder="Item's name" class="">
+              </div>
+            </div>
+            <div class="flexh">
+              <div id="gauche" class="flexv justifycontent-center text-center size_50">
+                <p>Rarity : </p>
+              </div>
+              <div id="droite" class="flexv spacebetween alignself-center size_50">
+                <select name="objectRarityList" id="objectRarityList" class="">
+                  <option value="Common">Common</option>
+                  <option value="Rare">Rare</option>
+                  <option value="Unique">Unique</option>
+                  <option value="Epic">Epic</option>
+                  <option value="Legendary">Legendary</option>
+                  <option value="Divine">Divine</option>
+                  <option value="Primordial">Primordial</option>
+                </select>
+              </div>
+            </div>
+            <div class="flexh">
+              <div id="gauche" class="flexv justifycontent-center text-center size_50">
+                <p>Weight : </p>
+              </div>
+              <div id="droite" class="flexv spacebetween alignself-center size_50">
+                <input id="objectWeightValue" type="number" placeholder="Weight" class="">
+              </div>
+              </div>
+            <div class="flexh">
+              <div id="gauche" class="flexv justifycontent-center text-center size_50">
+                <p>Gold Value : </p>
+              </div>
+              <div id="droite" class="flexv spacebetween alignself-center size_50">
+                <input id="objectGoldValue" type="number" placeholder="Gold value" class="">
+              </div>
+            </div>
 
-       <div>
-        
-        <div id="creationKitForm">
-          <div id="creationCommon">
-            <select name="objectTypeList" id="objectTypeList">
-              <option value="DefaultObjectTypeList">Please select an item type</option>
-              <option value="Weapon">Weapon</option>
-              <option value="Armor">Armor</option>
-              <option value="Potion">Potion</option>
-              <option value="Scroll">Scroll</option>
-              <option value="Material">Material</option>
-              <option value="Food">Food</option>
-            </select>
-            <div id="creationName">
-              <select name="objectRarityList" id="objectRarityList">
-                <option value="Common">Common</option>
-                <option value="Rare">Rare</option>
-                <option value="Unique">Unique</option>
-                <option value="Epic">Epic</option>
-                <option value="Legendary">Legendary</option>
-                <option value="Divine">Divine</option>
-                <option value="Primordial">Primordial</option>
-              </select>
-              <input id="objectName" type="text" placeholder="Item's name">
+
+              
+      
+                
+                
+          </div>        
+          <div id="creationVariable" class="flexv">
+            <div id="creationWeapon" class="flexv spacebetween"> 
+              <div class="flexh">
+                <div id="gauche" class="flexv justifycontent-center text-center size_50">
+                  <p>Weapon Type : </p>
+                </div>
+                <div id="droite" class="flexv spacebetween alignself-center size_50"> 
+                  <select name="weaponType" id="weaponType" class="">
+                    <option value="Sword">Sword</option>
+                    <option value="Axe">Axe</option>
+                    <option value="Hammer">Hammer</option>
+                    <option value="Shortsword">Shortsword</option>
+                    <option value="Spear">Spear</option>
+                    <option value="Staff">Staff</option>
+                    <option value="Throwing Weapon">Throwing Weapon</option>
+                    <option value="Bow">Bow</option>
+                    <option value="Crossbow">Crossbow</option>
+                  </select>
+                </div>
+              </div>
+              <div class=" flexh">
+                <div id="gauche" class="flexv justifycontent-center  text-center  size_50">
+                  <p>Two handed : </p>
+                </div>
+                <div id="droite" class="flexv spacebetween alignself-center size_50">
+                  <input type="checkbox" id="weaponTwoHanded" name="weaponTwoHanded" class=>
+                </div>
+              </div>
+              <div class=" flexh">
+                <div id="gauche" class="flexv alignself-center text-center size_50">
+                  <p>Weapon Damage :</p>
+                </div>
+                <div id="droite" class="flexv spacebetween alignself-center size_50 ">
+                  <input id="weaponDamageValue" type="number" placeholder="Weapon Damage Value">
+                </div>
+              </div>
+              <div class=" flexh">
+                <div id="gauche" class="flexv justifycontent-center  text-center size_50">
+                  <p>Legendary :</p>
+                </div>
+                <div id="droite" class="flexv spacebetween alignself-center size_50 ">
+                  <select name="weaponLegendaryMod" id="weaponLegendaryMod">
+                    <option value="ToDeleteWeaponLegendary">Legendary option</option>
+                  </select>
+                </div>
+              </div>
             </div>
-            <div id="creationBasic">
-              <input id="objectWeightValue" type="number" placeholder="Weight">
-              <input id="objectGoldValue" type="number" placeholder="Gold value">
-            </div>
-          </div>
-          <div id="creationVariable">
-            <div id="creationWeapon">
-              <select name="weaponType" id="weaponType">
-                <option value="Sword">Sword</option>
-                <option value="Axe">Axe</option>
-                <option value="Hammer">Hammer</option>
-                <option value="Shortsword">Shortsword</option>
-                <option value="Spear">Spear</option>
-                <option value="Staff">Staff</option>
-                <option value="Throwing Weapon">Throwing Weapon</option>
-                <option value="Bow">Bow</option>
-                <option value="Crossbow">Crossbow</option>
-              </select>
-              <label for="weaponTwoHanded">Two handed</label>
-              <input type="checkbox" id="weaponTwoHanded" name="weaponTwoHanded">
-              <input id="weaponDamageValue" type="number" placeholder="Weapon Damage Value">
-              <select name="weaponLegendaryMod" id="weaponLegendaryMod">
-                <option value="ToDeleteWeaponLegendary">Legendary option</option>
-              </select>
-            </div>
-            <div id="creationArmor">
-              <select name="armorType" id="armorType">
-                <option value="Light">Light</option>
-                <option value="Medium">Medium</option>
-                <option value="Heavy">Heavy</option>
-              </select>
-              <input id="armorClassValue" type="number" placeholder="Armor Value">
+            <div id="creationArmor" class="flexv justifycontent-center alignself-center">
+              <div class="flexh justifycontent-center alignself-center marginbottom_5">
+                <p>Armor Type : </p>
+                <select name="armorType" id="armorType">
+                  <option value="Light">Light</option>
+                  <option value="Medium">Medium</option>
+                  <option value="Heavy">Heavy</option>
+                </select>
+              </div>
+              <div class="flexh justifycontent-center alignself-center marginbottom_5">
+                <p>Armor Value : </p>
+                <input id="armorClassValue" type="number" placeholder="Armor Value">
+              </div>
               <select name="armorLegendaryMod" id="armorLegendaryMod">
                 <option value="ToDeleteArmorLegendary">Legendary option</option>
               </select>
             </div>
-            <div id="creationPotion">
-              <select name="potionType" id="potionType">
-                <option value="Poison">Poison</option>
-                <option value="Healing">Healing</option>
-              </select>
-              <input id="potionPowerValue" type="number" placeholder="Potion Power Value">
+            <div id="creationPotion" class="flexv justifycontent-center alignself-center">
+              <div class="flexh justifycontent-center alignself-center marginbottom_5">
+                <p>Potion Type :</p>
+                <select name="potionType" id="potionType">
+                  <option value="Poison">Poison</option>
+                  <option value="Healing">Healing</option>
+                </select>
+              </div>
+              <input id="potionPowerValue" type="number" placeholder="Potion Power Value" class="flexh justifycontent-center alignself-center marginbottom_5">
             </div>
-            <div id="creationScroll">
+            <div id="creationScroll" class="flexv justifycontent-center alignself-center marginbottom_5">
               <select name="scrollType" id="scrollType"> 
               <option  value="placeholdertodelete-SpellList">none</option>
               </select>
             </div>
-            <div id="creationMaterial">
+            <div id="creationMaterial" class="flexv justifycontent-center alignself-center marginbottom_5">
               <select name="materialType" id="materialType">
                 <option value="materialtypeList">material type</option>
               </select>
             </div>
-            <div id="creationFood">
+            <div id="creationFood" class="flexv justifycontent-center alignself-center marginbottom_5">
               <select name="foodType" id="foodType">
                 <option value="raw">Raw</option>
                 <option value="cooked">Cooked</option>
@@ -111,20 +181,25 @@
               </select>
             </div>
           </div>
-          <button id="objectCreate">Create</button>
-
-          <button id="objectRemove">Remove</button>
-
-          <select name="objectCategorieSelect" id="objectCategorieList"></select>
-          <select name="objectArmorSelect" id="objectArmorList"></select>
-          <select name="objectFoodSelect" id="objectFoodList"></select>
-          <select name="objectPotionSelect" id="objectPotionList"></select>
-          <select name="objectMaterialSelect" id="objectMaterialList"></select>
-          <select name="objectScrollSelect" id="objectScrollList"></select>
-          <select name="objectWeaponSelect" id="objectWeaponList"></select>
-
+          <div>
+            <div class="flexh justifycontent-center alignself-center marginbottom_5">
+              <button id="objectCreate">Create</button>
+              <button id="objectRemove">Remove</button>
+            </div>
+            <div class = "flexv justifycontent-center alignself-center marginbottom_5">
+              <select name="objectCategorieSelect" id="objectCategorieList" class="justifycontent-center alignself-center marginbottom_5"></select>
+              <select name="objectArmorSelect" id="objectArmorList" class="justifycontent-center alignself-center marginbottom_5"></select>
+              <select name="objectFoodSelect" id="objectFoodList" class="justifycontent-center alignself-center marginbottom_5"></select>
+              <select name="objectPotionSelect" id="objectPotionList" class="justifycontent-center alignself-center marginbottom_5"></select>
+              <select name="objectMaterialSelect" id="objectMaterialList" class="justifycontent-center alignself-center marginbottom_5"></select>
+              <select name="objectScrollSelect" id="objectScrollList" class="justifycontent-center alignself-center marginbottom_5"></select>
+              <select name="objectWeaponSelect" id="objectWeaponList" class="justifycontent-center alignself-center marginbottom_5"></select>
+            </div>
+          </div> 
         </div>
-       </div>
+        <div id="empty" class="flexgrow_20 border">     
+        </div>  
+      </div>
 
        <script type="module" defer>
         // Import the functions you need from the SDKs you need
@@ -462,7 +537,7 @@
     objectMaterialList.style.display = "none"
     objectScrollList.style.display = "none"
     objectWeaponList.style.display = "none"
-    creationKitForm.style.display="none"
+    creationKitForm.style.display="flex"
     creationWeapon.style.display = "none"
     creationArmor.style.display = "none"
     creationPotion.style.display = "none"
@@ -473,7 +548,7 @@
     function creationKit(){
       let objectTypeList = document.getElementById("objectTypeList").value
        if (objectTypeList === "Weapon"){
-        creationWeapon.style.display = "block"
+        creationWeapon.style.display = "flex"
         creationArmor.style.display = "none"
         creationPotion.style.display = "none"
         creationScroll.style.display = "none"
@@ -482,7 +557,7 @@
        }
        else if (objectTypeList === "Armor"){
         creationWeapon.style.display = "none"
-        creationArmor.style.display = "block"
+        creationArmor.style.display = "flex"
         creationPotion.style.display = "none"
         creationScroll.style.display = "none"
         creationMaterial.style.display = "none"
@@ -491,7 +566,7 @@
       else if (objectTypeList === "Potion"){
         creationWeapon.style.display = "none"
         creationArmor.style.display = "none"
-        creationPotion.style.display = "block"
+        creationPotion.style.display = "flex"
         creationScroll.style.display = "none"
         creationMaterial.style.display = "none"
         creationFood.style.display = "none"
@@ -500,7 +575,7 @@
         creationWeapon.style.display = "none"
         creationArmor.style.display = "none"
         creationPotion.style.display = "none"
-        creationScroll.style.display = "block"
+        creationScroll.style.display = "flex"
         creationMaterial.style.display = "none"
         creationFood.style.display = "none"
       }
@@ -509,7 +584,7 @@
         creationArmor.style.display = "none"
         creationPotion.style.display = "none"
         creationScroll.style.display = "none"
-        creationMaterial.style.display = "block"
+        creationMaterial.style.display = "flex"
         creationFood.style.display = "none"
       }
       else if (objectTypeList === "Food"){
@@ -518,7 +593,7 @@
         creationPotion.style.display = "none"
         creationScroll.style.display = "none"
         creationMaterial.style.display = "none"
-        creationFood.style.display = "block"
+        creationFood.style.display = "flex"
       }
     }
 
