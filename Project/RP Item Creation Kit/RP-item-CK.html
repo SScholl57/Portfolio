@@ -223,19 +223,31 @@
               </div>
             </div>
           </div>
-          <div>
+          <div class="flexv spacebetween">
             <div class="flexh justifycontent-center alignself-center marginbottom_5">
               <button id="objectCreate">Create</button>
               <button id="objectRemove">Remove</button>
             </div>
-            <div class = "flexv justifycontent-center alignself-center marginbottom_5">
-              <select name="objectCategorieSelect" id="objectCategorieList" class="justifycontent-center alignself-center marginbottom_5"></select>
-              <select name="objectArmorSelect" id="objectArmorList" class="justifycontent-center alignself-center marginbottom_5"></select>
-              <select name="objectFoodSelect" id="objectFoodList" class="justifycontent-center alignself-center marginbottom_5"></select>
-              <select name="objectPotionSelect" id="objectPotionList" class="justifycontent-center alignself-center marginbottom_5"></select>
-              <select name="objectMaterialSelect" id="objectMaterialList" class="justifycontent-center alignself-center marginbottom_5"></select>
-              <select name="objectScrollSelect" id="objectScrollList" class="justifycontent-center alignself-center marginbottom_5"></select>
-              <select name="objectWeaponSelect" id="objectWeaponList" class="justifycontent-center alignself-center marginbottom_5"></select>
+            <div class="flexh">
+              <div id="gauche" class="flexv justifycontent-center text-center size_50">
+                <p>Categorie :</p>
+              </div>
+              <div id="droite" class="flexv spacebetween alignself-center size_50">
+                <select name="objectCategorieSelect" id="objectCategorieList" class="justifycontent-center alignself-center marginbottom_5"></select>
+              </div>
+            </div>
+            <div class="flexh">
+              <div id="ObjectNameList" class="flexv justifycontent-center text-center size_50">
+                <p>Item :</p>
+              </div>
+              <div id="droite" class="flexv spacebetween alignself-center size_50">
+                <select name="objectArmorSelect" id="objectArmorList" class="justifycontent-center alignself-center marginbottom_5"></select>
+                <select name="objectFoodSelect" id="objectFoodList" class="justifycontent-center alignself-center marginbottom_5"></select>
+                <select name="objectPotionSelect" id="objectPotionList" class="justifycontent-center alignself-center marginbottom_5"></select>
+                <select name="objectMaterialSelect" id="objectMaterialList" class="justifycontent-center alignself-center marginbottom_5"></select>
+                <select name="objectScrollSelect" id="objectScrollList" class="justifycontent-center alignself-center marginbottom_5"></select>
+                <select name="objectWeaponSelect" id="objectWeaponList" class="justifycontent-center alignself-center marginbottom_5"></select>
+              </div>
             </div>
           </div> 
         </div>
@@ -274,6 +286,7 @@
     const signUpButton = document.querySelector("#signUpButton")
     const signInButton = document.querySelector("#signInButton")
     let user;
+    let signIn = false
    
     const userSignUp = async() => {
       const signUpPseudo = userPseudo.value;
@@ -293,8 +306,6 @@
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        console.log(errorCode + errorMessage)
-        
       })
     }
    
@@ -303,18 +314,23 @@
     const userSignIn = async() => {
       const signInEmail = userEmail.value;
       const signInPassword = userPassword.value;
-      signInWithEmailAndPassword(auth, signInEmail, signInPassword)
-      .then((userCredential) => {
-        user = userCredential.user;
-        creationKitForm.style.display="block"
-        loadItems().then(onItemsLoaded)
-        alert("You have signed in !")
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(errorCode + errorMessage)
-      })
+      if(signIn === true){
+        alert("You are already logged in.")
+      }
+      else{
+        signInWithEmailAndPassword(auth, signInEmail, signInPassword)
+        .then((userCredential) => {
+          user = userCredential.user;
+          creationKitForm.style.display="flex"
+          signIn=true
+          loadItems().then(onItemsLoaded)
+          alert("You have signed in !")
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+        })
+      }
     }
    
     signInButton.addEventListener('click', userSignIn)
@@ -337,7 +353,6 @@
     async function loadItems(){
       const snapshot = await get(ref(db, "Items/" + user.uid))
       items = snapshot.val()
-      console.log(items)
     }
 
     function onItemsLoaded(){
@@ -458,11 +473,9 @@
    
     function toggleList(){
       let objectCategorieList = document.querySelector('#objectCategorieList')
-      console.log(objectCategorieList.value)
-      console.log(typeof objectCategorieList)
       if(objectCategorieList.value === "Categorie_Armor"){
-        console.log("Test ici")
-        objectArmorList.style.display = "block"
+        ObjectNameList.style.display = "flex"
+        objectArmorList.style.display = "flex"
         objectFoodList.style.display = "none"
         objectPotionList.style.display = "none"
         objectMaterialList.style.display = "none"
@@ -470,44 +483,49 @@
         objectWeaponList.style.display = "none"
       }
       else if(objectCategorieList.value === "Categorie_Food"){
+        ObjectNameList.style.display = "flex"
         objectArmorList.style.display = "none"
-        objectFoodList.style.display = "block"
+        objectFoodList.style.display = "flex"
         objectPotionList.style.display = "none"
         objectMaterialList.style.display = "none"
         objectScrollList.style.display = "none"
         objectWeaponList.style.display = "none"
       }
       else if(objectCategorieList.value === "Categorie_Potion"){
+        ObjectNameList.style.display = "flex"
         objectArmorList.style.display = "none"
         objectFoodList.style.display = "none"
-        objectPotionList.style.display = "block"
+        objectPotionList.style.display = "flex"
         objectMaterialList.style.display = "none"
         objectScrollList.style.display = "none"
         objectWeaponList.style.display = "none"
       }
       else if(objectCategorieList.value === "Categorie_Material"){
+        ObjectNameList.style.display = "flex"
         objectArmorList.style.display = "none"
         objectFoodList.style.display = "none"
         objectPotionList.style.display = "none"
-        objectMaterialList.style.display = "block"
+        objectMaterialList.style.display = "flex"
         objectScrollList.style.display = "none"
         objectWeaponList.style.display = "none"
       }
       else if(objectCategorieList.value === "Categorie_Scroll"){
+        ObjectNameList.style.display = "flex"
         objectArmorList.style.display = "none"
         objectFoodList.style.display = "none"
         objectPotionList.style.display = "none"
         objectMaterialList.style.display = "none"
-        objectScrollList.style.display = "block"
+        objectScrollList.style.display = "flex"
         objectWeaponList.style.display = "none"
       }
       else if(objectCategorieList.value === "Categorie_Weapon"){
+        ObjectNameList.style.display = "flex"
         objectArmorList.style.display = "none"
         objectFoodList.style.display = "none"
         objectPotionList.style.display = "none"
         objectMaterialList.style.display = "none"
         objectScrollList.style.display = "none"
-        objectWeaponList.style.display = "block"
+        objectWeaponList.style.display = "flex"
       }
 
     }
@@ -572,7 +590,7 @@
       }
     }
 
-    
+    ObjectNameList.style.display = "none"
     objectArmorList.style.display = "none"
     objectFoodList.style.display = "none"
     objectPotionList.style.display = "none"
