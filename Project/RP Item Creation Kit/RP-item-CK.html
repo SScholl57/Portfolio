@@ -348,7 +348,6 @@
     var objectLegendaryMod = document.querySelector("#objectLegendaryMod")
     var objectGoldValue = document.querySelector("#objectGoldValue")
     var objectCreateBtn = document.querySelector("#objectCreate")
-    var objectRemoveBtn = document.querySelector("#objectRemove")
     var itemListBtn = document.querySelector("#objectCategorieList")
    
     
@@ -535,7 +534,6 @@
 
     itemListBtn.addEventListener('click', toggleList)
     objectCreateBtn.addEventListener('click', CreateItem);
-    objectRemoveBtn.addEventListener('click', RemoveData)
 
     class Items {
       constructor(itemID, itemName,itemRarity, itemType,itemGoldValue, itemWeightValue){
