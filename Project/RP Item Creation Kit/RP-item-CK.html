@@ -13,8 +13,8 @@
 <body>
     <main class="flexv">
       <div id="authForm" class="flexv justifycontent-center alignself-center">
-        <h2>Sign In</h2>
-        <input type="text" placeholder="pseudo" id="userPseudo" class="marginbottom_5">
+        <h2 id="signInTitle">Sign In</h2>
+        <input type="text" placeholder="pseudo" id="userPseudoInput" class="marginbottom_5">
         <input type="email" placeholder="email" id="userEmail" class="marginbottom_5">
         <input type="password" placeholder="password" id="userPassword" class="marginbottom_5"> <br><br>
         <button id="signUpButton" class="marginbottom_5">Create account</button>
@@ -25,6 +25,9 @@
         </div>
         <div id="creationKitForm" class="flexv flexgrow_2">
           <div id="creationCommon" class="flexv spacebetween">
+            <div>
+              <h1 class="text-center">Creation Kit</h1>
+            </div>
             <div class="flexh">
               <div id="gauche" class="flexv justifycontent-center text-center size_50">
                 <p>Categorie :</p>
@@ -323,6 +326,7 @@
           user = userCredential.user;
           creationKitForm.style.display="flex"
           signIn=true
+          authForm.style.display ="none"
           loadItems().then(onItemsLoaded)
           alert("You have signed in !")
         })
@@ -590,6 +594,7 @@
       }
     }
 
+    userPseudoInput.style.display = "none"
     ObjectNameList.style.display = "none"
     objectArmorList.style.display = "none"
     objectFoodList.style.display = "none"
@@ -597,7 +602,7 @@
     objectMaterialList.style.display = "none"
     objectScrollList.style.display = "none"
     objectWeaponList.style.display = "none"
-    creationKitForm.style.display="flex"
+    creationKitForm.style.display="none"
     creationWeapon.style.display = "none"
     creationArmor.style.display = "none"
     creationPotion.style.display = "none"
