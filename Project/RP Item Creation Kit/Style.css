@@ -33,6 +33,10 @@
   align-self: center;
  }
 
+ .alignself-start{
+  align-self: flex-start;
+ }
+
  .alignitem-center{
   align-items: center;
  }

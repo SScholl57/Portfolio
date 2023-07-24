@@ -20,8 +20,8 @@
         <button id="signUpButton" class="marginbottom_5">Create account</button>
         <button id="signInButton" class="marginbottom_5">Login</button>
       </div>
-      <div class="flexh border">
-        <div id="empty" class="flexgrow_20 border">     
+      <div class="flexh">
+        <div id="empty" class="flexgrow_20">     
         </div>
         <div id="creationKitForm" class="flexv flexgrow_2">
           <div id="creationCommon" class="flexv spacebetween">
@@ -118,8 +118,8 @@
                   <input id="weaponDamageValue" type="number" placeholder="Weapon Damage Value">
                 </div>
               </div>
-              <div class=" flexh">
-                <div id="gauche" class="flexv justifycontent-center  text-center size_50">
+              <div class="flexh">
+                <div id="gauche" class="flexv justifycontent-center text-center size_50">
                   <p>Legendary :</p>
                 </div>
                 <div id="droite" class="flexv spacebetween alignself-center size_50 ">
@@ -129,50 +129,98 @@
                 </div>
               </div>
             </div>
-            <div id="creationArmor" class="flexv justifycontent-center alignself-center">
-              <div class="flexh justifycontent-center alignself-center marginbottom_5">
-                <p>Armor Type : </p>
-                <select name="armorType" id="armorType">
-                  <option value="Light">Light</option>
-                  <option value="Medium">Medium</option>
-                  <option value="Heavy">Heavy</option>
-                </select>
+            <div id="creationArmor" class="flexv spacebetween">
+              <div class="flexh">
+                <div id="gauche" class="flexv justifycontent-center  text-center size_50">
+                  <p>Armor Type : </p>
+                </div>
+                <div id="droite" class="flexv spacebetween alignself-center size_50 ">
+                  <select name="armorType" id="armorType">
+                    <option value="Light">Light</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Heavy">Heavy</option>
+                  </select>
+                </div>
               </div>
-              <div class="flexh justifycontent-center alignself-center marginbottom_5">
-                <p>Armor Value : </p>
-                <input id="armorClassValue" type="number" placeholder="Armor Value">
+              <div class="flexh">
+                <div id="gauche" class="flexv justifycontent-center  text-center size_50">
+                  <p>Armor Value : </p>
+                </div>
+                <div id="droite" class="flexv spacebetween alignself-center size_50 ">
+                  <input id="armorClassValue" type="number" placeholder="Armor Value">
+                </div>
               </div>
-              <select name="armorLegendaryMod" id="armorLegendaryMod">
-                <option value="ToDeleteArmorLegendary">Legendary option</option>
-              </select>
-            </div>
-            <div id="creationPotion" class="flexv justifycontent-center alignself-center">
-              <div class="flexh justifycontent-center alignself-center marginbottom_5">
-                <p>Potion Type :</p>
-                <select name="potionType" id="potionType">
-                  <option value="Poison">Poison</option>
-                  <option value="Healing">Healing</option>
-                </select>
+              <div class="flexh">
+                <div id="gauche" class="flexv justifycontent-center text-center size_50">
+                  <p>Legendary : </p>
+                </div>
+                <div id="droite" class="flexv spacebetween alignself-center size_50">
+                  <select name="armorLegendaryMod" id="armorLegendaryMod">
+                    <option value="ToDeleteArmorLegendary">Legendary option</option>
+                  </select>
+                </div>
               </div>
-              <input id="potionPowerValue" type="number" placeholder="Potion Power Value" class="flexh justifycontent-center alignself-center marginbottom_5">
+
             </div>
-            <div id="creationScroll" class="flexv justifycontent-center alignself-center marginbottom_5">
-              <select name="scrollType" id="scrollType"> 
-              <option  value="placeholdertodelete-SpellList">none</option>
-              </select>
+            <div id="creationPotion" class="flexv spacebetween">
+              <div class="flexh">
+                <div id="gauche" class="flexv justifycontent-center text-center size_50">
+                  <p>Potion Type :</p>
+                </div>
+                <div id="droite" class="flexv spacebetween alignself-center size_50">
+                  <select name="potionType" id="potionType">
+                    <option value="Poison">Poison</option>
+                    <option value="Healing">Healing</option>
+                  </select>
+                </div>
+              </div>
+              <div class="flexh">
+                <div id="gauche" class="flexv justifycontent-center text-center size_50">
+                  <p>Power :</p>
+                </div>
+                <div id="droite" class="flexv spacebetween alignself-center size_50">
+                  <input id="potionPowerValue" type="number" placeholder="Potion power value" class="flexh justifycontent-center alignself-center marginbottom_5">
+                </div>
+              </div> 
             </div>
-            <div id="creationMaterial" class="flexv justifycontent-center alignself-center marginbottom_5">
-              <select name="materialType" id="materialType">
-                <option value="materialtypeList">material type</option>
-              </select>
+            <div id="creationScroll" class="flexv spacebetween">
+              <div class="flexh">
+                <div id="gauche" class="flexv justifycontent-center text-center size_50">
+                  <p>Scroll Spell :</p>
+                </div>
+                <div id="droite" class="flexv spacebetween alignself-center size_50">
+                  <select name="scrollType" id="scrollType"> 
+                    <option  value="placeholdertodelete-SpellList">none</option>
+                  </select>
+                </div>
+              </div>
             </div>
-            <div id="creationFood" class="flexv justifycontent-center alignself-center marginbottom_5">
-              <select name="foodType" id="foodType">
-                <option value="raw">Raw</option>
-                <option value="cooked">Cooked</option>
-                <option value="homemade">Home made</option>
-                <option value="Spoiled">Spoiled</option>
-              </select>
+            <div id="creationMaterial" class="flexv spacebetween">
+              <div class="flexh">
+                <div id="gauche" class="flexv justifycontent-center text-center size_50">
+                  <p>Material type :</p>
+                </div>
+                <div id="droite" class="flexv spacebetween alignself-center size_50">
+                  <select name="materialType" id="materialType">
+                    <option value="materialtypeList">material type</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div id="creationFood" class="flexv spacebetween">
+              <div class="flexh">
+                <div id="gauche" class="flexv justifycontent-center text-center size_50">
+                  <p>Food type :</p>
+                </div>
+                <div id="droite" class="flexv spacebetween alignself-center size_50">
+                  <select name="foodType" id="foodType">
+                    <option value="raw">Raw</option>
+                    <option value="cooked">Cooked</option>
+                    <option value="homemade">Home made</option>
+                    <option value="Spoiled">Spoiled</option>
+                  </select>
+                </div>
+              </div>
             </div>
           </div>
           <div>
@@ -191,7 +239,7 @@
             </div>
           </div> 
         </div>
-        <div id="empty" class="flexgrow_20 border">     
+        <div id="empty" class="flexgrow_20">     
         </div>  
       </div>
 
