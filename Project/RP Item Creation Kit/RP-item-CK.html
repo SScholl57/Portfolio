@@ -251,6 +251,46 @@
                 <select name="objectWeaponSelect" id="objectWeaponList" class="justifycontent-center alignself-center marginbottom_5"></select>
               </div>
             </div>
+            <div class="flexh">
+              <div class="flexv justifycontent-center text-center size_50">
+                <p id="objectCommonDisplay1">Item :</p>
+                <p id="objectCommonDisplay2">Rarity :</p>
+                <p id="objectCommonDisplay3">Type :</p>
+                <p id="objectCommonDisplay4">Gold Value :</p>
+                <p id="objectCommonDisplay5">Weight :</p>
+                <p id="objectWeaponDisplay1">Weapon Type :</p>
+                <p id="objectWeaponDisplay2">Twohanded :</p>
+                <p id="objectWeaponDisplay3">Damage Value :</p>
+                <p id="objectWeaponDisplay4">Legendary :</p>
+                <p id="objectArmorDisplay1">Armor Type :</p>
+                <p id="objectArmorDisplay2">Armor Class Value:</p>
+                <p id="objectArmorDisplay3">Legendary :</p>
+                <p id="objectPotionDisplay1">Potion Type :</p>
+                <p id="objectPotionDisplay2">Potion Power :</p>
+                <p id="objectScrollDisplay">Scroll Type :</p>
+                <p id="objectMaterialDisplay">Material Type :</p>
+                <p id="objectFoodDisplay">Food Type :</p>
+              </div>
+              <div id="droite" class="flexv spacebetween alignself-center size_50">
+                <p id="displayItemName">Test 1</p>
+                <p id="displayItemRarity">Test 2</p>
+                <p id="displayItemType">Test 3</p>
+                <p id="displayItemGold">Test 4</p>
+                <p id="displayItemWeight">Test 5</p>
+                <p id="displayWeaponType">Test 6</p>
+                <p id="displayTwoHanded">Test 7</p>
+                <p id="displayDamageValue">Test 8</p>
+                <p id="displayWeaponLegendary">Test 9</p>
+                <p id="displayArmorType">Test 10</p>
+                <p id="displayArmorClass">Test 11</p>
+                <p id="displayArmorLegendary">Test 12</p>
+                <p id="displayPotionType">Test 13</p>
+                <p id="displayPotionPower">Test 14</p>
+                <p id="displayScrollType">Test 15</p>
+                <p id="displayMaterialType">Test 16</p>
+                <p id="displayFoodType">Test 17</p>
+              </div>
+            </div>
           </div> 
         </div>
         <div id="empty" class="flexgrow_20">     
@@ -349,6 +389,12 @@
     var objectGoldValue = document.querySelector("#objectGoldValue")
     var objectCreateBtn = document.querySelector("#objectCreate")
     var itemListBtn = document.querySelector("#objectCategorieList")
+    var armorListBtn = document.querySelector("#objectArmorList")
+    var foodListBtn = document.querySelector("#objectFoodList")
+    var potionListBtn = document.querySelector("#objectPotionList")
+    var materialListBtn = document.querySelector("#objectMaterialList")
+    var scrollListBtn = document.querySelector("#objectScrollList")
+    var weaponListBtn = document.querySelector("#objectWeaponList")
    
     
     let items = []
@@ -474,7 +520,7 @@
     
    
     function toggleList(){
-      let objectCategorieList = document.querySelector('#objectCategorieList')
+      var objectCategorieList = document.querySelector('#objectCategorieList')
       if(objectCategorieList.value === "Categorie_Armor"){
         ObjectNameList.style.display = "flex"
         objectArmorList.style.display = "flex"
@@ -532,8 +578,282 @@
 
     }
 
-    itemListBtn.addEventListener('click', toggleList)
+    function parameterDisplay(){
+      const displayItemName = document.getElementById("displayItemName")
+      const displayItemRarity = document.getElementById("displayItemRarity")
+      const displayItemType = document.getElementById("displayItemType")
+      const displayItemGold = document.getElementById("displayItemGold")
+      const displayItemWeight = document.getElementById("displayItemWeight")
+      const displayWeaponType = document.getElementById("displayWeaponType")
+      const displayTwoHanded = document.getElementById("displayTwoHanded")
+      const displayDamageValue = document.getElementById("displayDamageValue")
+      const displayWeaponLegendary = document.getElementById("displayWeaponLegendary")
+      const displayArmorType = document.getElementById("displayArmorType")
+      const displayArmorClass = document.getElementById("displayArmorClass")
+      const displayArmorLegendary = document.getElementById("displayArmorLegendary")
+      const displayPotionType = document.getElementById("displayPotionType")
+      const displayPotionPower = document.getElementById("displayPotionPower")
+      const displayScrollType = document.getElementById("displayScrollType")
+      const displayMaterialType = document.getElementById("displayMaterialType")
+      const displayFoodType = document.getElementById("displayFoodType")
+      displayItemName.style.display = "flex"
+      displayItemRarity.style.display = "flex"
+      displayItemType.style.display = "flex"
+      displayItemGold.style.display = "flex"
+      displayItemWeight.style.display = "flex"
+      if(objectCategorieList.value === "Categorie_Armor"){
+        const item = items.Armor[objectArmorList.value]
+        displayItemName.innerHTML = item.itemName;
+        displayItemRarity.innerHTML = item.itemRarity;
+        displayItemType.innerHTML = item.itemType;
+        displayItemGold.innerHTML = item.itemGoldValue;
+        displayItemWeight.innerHTML = item.itemWeightValue;
+        displayArmorType.innerHTML = item.armorType
+        displayArmorClass.innerHTML = item.armorClassValue
+        displayArmorLegendary.innerHTML = item.armorLegendaryMod
+        displayWeaponType.style.display = "none"
+        displayTwoHanded.style.display = "none"
+        displayDamageValue.style.display = "none"
+        displayWeaponLegendary.style.display = "none"
+        displayArmorType.style.display = "flex"
+        displayArmorClass.style.display = "flex"
+        displayArmorLegendary.style.display = "flex"
+        displayPotionType.style.display = "none"
+        displayPotionPower.style.display = "none"
+        displayScrollType.style.display = "none"
+        displayMaterialType.style.display = "none"
+        displayFoodType.style.display = "none"
+        objectCommonDisplay1.style.display = "flex"
+        objectCommonDisplay2.style.display = "flex"
+        objectCommonDisplay3.style.display = "flex"
+        objectCommonDisplay4.style.display = "flex"
+        objectCommonDisplay5.style.display = "flex"
+        objectArmorDisplay1.style.display = "flex"
+        objectArmorDisplay2.style.display = "flex"
+        objectArmorDisplay3.style.display = "flex"
+        objectFoodDisplay.style.display = "none"
+        objectPotionDisplay1.style.display = "none"
+        objectPotionDisplay2.style.display = "none"
+        objectMaterialDisplay.style.display = "none"
+        objectScrollDisplay.style.display = "none"
+        objectWeaponDisplay1.style.display = "none"
+        objectWeaponDisplay2.style.display = "none"
+        objectWeaponDisplay3.style.display = "none"
+        objectWeaponDisplay4.style.display = "none"
+      }
+      else if(objectCategorieList.value === "Categorie_Weapon"){
+        const displayWeaponType = document.getElementById("displayWeaponType")
+        const displayTwoHanded = document.getElementById("displayTwoHanded")
+        const displayDamageValue = document.getElementById("displayDamageValue")
+        const displayWeaponLegendary = document.getElementById("displayWeaponLegendary")
+        const item = items.Weapon[objectWeaponList.value]
+        displayItemName.innerHTML = item.itemName;
+        displayItemRarity.innerHTML = item.itemRarity;
+        displayItemType.innerHTML = item.itemType;
+        displayItemGold.innerHTML = item.itemGoldValue;
+        displayItemWeight.innerHTML = item.itemWeightValue;
+        displayWeaponType.innerHTML = item.weaponType
+        displayTwoHanded.innerHTML = item.weaponTwoHanded
+        displayDamageValue.innerHTML = item.weaponDamageValue
+        displayWeaponLegendary.innerHTML = item.weaponLegendaryMod
+        displayWeaponType.style.display = "flex"
+        displayTwoHanded.style.display = "flex"
+        displayDamageValue.style.display = "flex"
+        displayWeaponLegendary.style.display = "flex"
+        displayArmorType.style.display = "none"
+        displayArmorClass.style.display = "none"
+        displayArmorLegendary.style.display = "none"
+        displayPotionType.style.display = "none"
+        displayPotionPower.style.display = "none"
+        displayScrollType.style.display = "none"
+        displayMaterialType.style.display = "none"
+        displayFoodType.style.display = "none"
+        objectCommonDisplay1.style.display = "flex"
+        objectCommonDisplay2.style.display = "flex"
+        objectCommonDisplay3.style.display = "flex"
+        objectCommonDisplay4.style.display = "flex"
+        objectCommonDisplay5.style.display = "flex"
+        objectArmorDisplay1.style.display = "none"
+        objectArmorDisplay2.style.display = "none"
+        objectArmorDisplay3.style.display = "none"
+        objectFoodDisplay.style.display = "none"
+        objectPotionDisplay1.style.display = "none"
+        objectPotionDisplay2.style.display = "none"
+        objectMaterialDisplay.style.display = "none"
+        objectScrollDisplay.style.display = "none"
+        objectWeaponDisplay1.style.display = "flex"
+        objectWeaponDisplay2.style.display = "flex"
+        objectWeaponDisplay3.style.display = "flex"
+        objectWeaponDisplay4.style.display = "flex"
+      }
+      else if(objectCategorieList.value === "Categorie_Potion"){
+        const displayPotionType = document.getElementById("displayPotionType")
+        const displayPotionPower = document.getElementById("displayPotionPower")
+        const item = items.Potion[objectPotionList.value]
+        displayItemName.innerHTML = item.itemName;
+        displayItemRarity.innerHTML = item.itemRarity;
+        displayItemType.innerHTML = item.itemType;
+        displayItemGold.innerHTML = item.itemGoldValue;
+        displayItemWeight.innerHTML = item.itemWeightValue;
+        displayPotionType.innerHTML = item.potionType
+        displayPotionPower.innerHTML = item.potionPowerValue
+        displayWeaponType.style.display = "none"
+        displayTwoHanded.style.display = "none"
+        displayDamageValue.style.display = "none"
+        displayWeaponLegendary.style.display = "none"
+        displayArmorType.style.display = "none"
+        displayArmorClass.style.display = "none"
+        displayArmorLegendary.style.display = "none"
+        displayPotionType.style.display = "flex"
+        displayPotionPower.style.display = "flex"
+        displayScrollType.style.display = "none"
+        displayMaterialType.style.display = "none"
+        displayFoodType.style.display = "none"
+        objectCommonDisplay1.style.display = "flex"
+        objectCommonDisplay2.style.display = "flex"
+        objectCommonDisplay3.style.display = "flex"
+        objectCommonDisplay4.style.display = "flex"
+        objectCommonDisplay5.style.display = "flex"
+        objectArmorDisplay1.style.display = "none"
+        objectArmorDisplay2.style.display = "none"
+        objectArmorDisplay3.style.display = "none"
+        objectFoodDisplay.style.display = "none"
+        objectPotionDisplay1.style.display = "flex"
+        objectPotionDisplay2.style.display = "flex"
+        objectMaterialDisplay.style.display = "none"
+        objectScrollDisplay.style.display = "none"
+        objectWeaponDisplay1.style.display = "none"
+        objectWeaponDisplay2.style.display = "none"
+        objectWeaponDisplay3.style.display = "none"
+        objectWeaponDisplay4.style.display = "none"
+      }
+      else if(objectCategorieList.value === "Categorie_Material"){
+        const displayMaterialType = document.getElementById("displayMaterialType")
+        const item = items.Material[objectMaterialList.value]
+        displayItemName.innerHTML = item.itemName;
+        displayItemRarity.innerHTML = item.itemRarity;
+        displayItemType.innerHTML = item.itemType;
+        displayItemGold.innerHTML = item.itemGoldValue;
+        displayItemWeight.innerHTML = item.itemWeightValue;
+        displayMaterialType.innerHTML = item.materialType
+        displayWeaponType.style.display = "none"
+        displayTwoHanded.style.display = "none"
+        displayDamageValue.style.display = "none"
+        displayWeaponLegendary.style.display = "none"
+        displayArmorType.style.display = "none"
+        displayArmorClass.style.display = "none"
+        displayArmorLegendary.style.display = "none"
+        displayPotionType.style.display = "none"
+        displayPotionPower.style.display = "none"
+        displayScrollType.style.display = "none"
+        displayMaterialType.style.display = "flex"
+        displayFoodType.style.display = "none"
+        objectCommonDisplay1.style.display = "flex"
+        objectCommonDisplay2.style.display = "flex"
+        objectCommonDisplay3.style.display = "flex"
+        objectCommonDisplay4.style.display = "flex"
+        objectCommonDisplay5.style.display = "flex"
+        objectArmorDisplay1.style.display = "none"
+        objectArmorDisplay2.style.display = "none"
+        objectArmorDisplay3.style.display = "none"
+        objectFoodDisplay.style.display = "none"
+        objectPotionDisplay1.style.display = "none"
+        objectPotionDisplay2.style.display = "none"
+        objectMaterialDisplay.style.display = "flex"
+        objectScrollDisplay.style.display = "none"
+        objectWeaponDisplay1.style.display = "none"
+        objectWeaponDisplay2.style.display = "none"
+        objectWeaponDisplay3.style.display = "none"
+        objectWeaponDisplay4.style.display = "none"
+      }
+      else if(objectCategorieList.value === "Categorie_Scroll"){
+        const displayScrollType = document.getElementById("displayScrollType")
+        const item = items.Scroll[objectScrollList.value]
+        displayItemName.innerHTML = item.itemName;
+        displayItemRarity.innerHTML = item.itemRarity;
+        displayItemType.innerHTML = item.itemType;
+        displayItemGold.innerHTML = item.itemGoldValue;
+        displayItemWeight.innerHTML = item.itemWeightValue;
+        displayScrollType.innerHTML = item.scrollType
+        displayWeaponType.style.display = "none"
+        displayTwoHanded.style.display = "none"
+        displayDamageValue.style.display = "none"
+        displayWeaponLegendary.style.display = "none"
+        displayArmorType.style.display = "none"
+        displayArmorClass.style.display = "none"
+        displayArmorLegendary.style.display = "none"
+        displayPotionType.style.display = "none"
+        displayPotionPower.style.display = "none"
+        displayScrollType.style.display = "flex"
+        displayMaterialType.style.display = "none"
+        displayFoodType.style.display = "none"
+        objectCommonDisplay1.style.display = "flex"
+        objectCommonDisplay2.style.display = "flex"
+        objectCommonDisplay3.style.display = "flex"
+        objectCommonDisplay4.style.display = "flex"
+        objectCommonDisplay5.style.display = "flex"
+        objectArmorDisplay1.style.display = "none"
+        objectArmorDisplay2.style.display = "none"
+        objectArmorDisplay3.style.display = "none"
+        objectFoodDisplay.style.display = "none"
+        objectPotionDisplay1.style.display = "none"
+        objectPotionDisplay2.style.display = "none"
+        objectMaterialDisplay.style.display = "none"
+        objectScrollDisplay.style.display = "flex"
+        objectWeaponDisplay1.style.display = "none"
+        objectWeaponDisplay2.style.display = "none"
+        objectWeaponDisplay3.style.display = "none"
+        objectWeaponDisplay4.style.display = "none"
+      }
+      else if(objectCategorieList.value === "Categorie_Food"){
+        const displayFoodType = document.getElementById("displayFoodType")
+        const item = items.Food[objectFoodList.value]
+        displayItemName.innerHTML = item.itemName;
+        displayItemRarity.innerHTML = item.itemRarity;
+        displayItemType.innerHTML = item.itemType;
+        displayItemGold.innerHTML = item.itemGoldValue;
+        displayItemWeight.innerHTML = item.itemWeightValue;
+        displayFoodType.innerHTML = item.foodType
+        displayWeaponType.style.display = "none"
+        displayTwoHanded.style.display = "none"
+        displayDamageValue.style.display = "none"
+        displayWeaponLegendary.style.display = "none"
+        displayArmorType.style.display = "none"
+        displayArmorClass.style.display = "none"
+        displayArmorLegendary.style.display = "none"
+        displayPotionType.style.display = "none"
+        displayPotionPower.style.display = "none"
+        displayScrollType.style.display = "none"
+        displayMaterialType.style.display = "none"
+        displayFoodType.style.display = "flex"
+        objectCommonDisplay1.style.display = "flex"
+        objectCommonDisplay2.style.display = "flex"
+        objectCommonDisplay3.style.display = "flex"
+        objectCommonDisplay4.style.display = "flex"
+        objectCommonDisplay5.style.display = "flex"
+        objectArmorDisplay1.style.display = "none"
+        objectArmorDisplay2.style.display = "none"
+        objectArmorDisplay3.style.display = "none"
+        objectFoodDisplay.style.display = "flex"
+        objectPotionDisplay1.style.display = "none"
+        objectPotionDisplay2.style.display = "none"
+        objectMaterialDisplay.style.display = "none"
+        objectScrollDisplay.style.display = "none"
+        objectWeaponDisplay1.style.display = "none"
+        objectWeaponDisplay2.style.display = "none"
+        objectWeaponDisplay3.style.display = "none"
+        objectWeaponDisplay4.style.display = "none"
+      }
+    }
+
+    itemListBtn.addEventListener('change', toggleList)
     objectCreateBtn.addEventListener('click', CreateItem);
+    armorListBtn.addEventListener('click', parameterDisplay)
+    weaponListBtn.addEventListener('click', parameterDisplay)
+    foodListBtn.addEventListener('click', parameterDisplay)
+    potionListBtn.addEventListener('click', parameterDisplay)
+    materialListBtn.addEventListener('click', parameterDisplay)
+    scrollListBtn.addEventListener('click', parameterDisplay)
 
     class Items {
       constructor(itemID, itemName,itemRarity, itemType,itemGoldValue, itemWeightValue){
@@ -599,6 +919,40 @@
     objectMaterialList.style.display = "none"
     objectScrollList.style.display = "none"
     objectWeaponList.style.display = "none"
+    objectCommonDisplay1.style.display = "none"
+    objectCommonDisplay2.style.display = "none"
+    objectCommonDisplay3.style.display = "none"
+    objectCommonDisplay4.style.display = "none"
+    objectCommonDisplay5.style.display = "none"
+    objectArmorDisplay1.style.display = "none"
+    objectArmorDisplay2.style.display = "none"
+    objectArmorDisplay3.style.display = "none"
+    objectFoodDisplay.style.display = "none"
+    objectPotionDisplay1.style.display = "none"
+    objectPotionDisplay2.style.display = "none"
+    objectMaterialDisplay.style.display = "none"
+    objectScrollDisplay.style.display = "none"
+    objectWeaponDisplay1.style.display = "none"
+    objectWeaponDisplay2.style.display = "none"
+    objectWeaponDisplay3.style.display = "none"
+    objectWeaponDisplay4.style.display = "none"
+    displayItemName.style.display = "none"
+    displayItemRarity.style.display = "none"
+    displayItemType.style.display = "none"
+    displayItemGold.style.display = "none"
+    displayItemWeight.style.display = "none"
+    displayWeaponType.style.display = "none"
+    displayTwoHanded.style.display = "none"
+    displayDamageValue.style.display = "none"
+    displayWeaponLegendary.style.display = "none"
+    displayArmorType.style.display = "none"
+    displayArmorClass.style.display = "none"
+    displayArmorLegendary.style.display = "none"
+    displayPotionType.style.display = "none"
+    displayPotionPower.style.display = "none"
+    displayScrollType.style.display = "none"
+    displayMaterialType.style.display = "none"
+    displayFoodType.style.display = "none"
     creationKitForm.style.display="none"
     creationWeapon.style.display = "none"
     creationArmor.style.display = "none"
@@ -660,6 +1014,8 @@
     }
 
     objectTypeList.addEventListener('change', creationKit);
+
+
 
    
 
